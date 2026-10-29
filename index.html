@@ -8,6 +8,7 @@
   <title>Little Lantern — a gentle study space</title>
   <link rel="stylesheet" href="style.css">
   <script defer src="syllabus-data.js"></script>
+  <script defer src="study-notes.js"></script>
   <script defer src="app.js"></script>
 </head>
 <body>
@@ -54,7 +55,7 @@
 
         <div class="section-line"><h2>Your learning garden</h2><span class="line-note">little by little 🌱</span></div>
         <section class="stats-grid" aria-label="Syllabus progress">
-          <article class="stat-card stat-progress"><div class="stat-top"><span class="stat-label">SYLLABUS EXPLORED</span><span class="stat-icon sage">↗</span></div><div class="stat-number"><span id="exploredPercent">0</span><small>%</small></div><div class="progress-track"><span id="exploredBar" style="width:0%"></span></div><p><span id="exploredCount">0 of 13</span> topics started</p></article>
+          <article class="stat-card stat-progress"><div class="stat-top"><span class="stat-label">SYLLABUS EXPLORED</span><span class="stat-icon sage">↗</span></div><div class="stat-number"><span id="exploredPercent">0</span><small>%</small></div><div class="progress-track"><span id="exploredBar" style="width:0%"></span></div><p><span id="exploredCount">0 of 23</span> topics started</p></article>
           <article class="stat-card"><div class="stat-top"><span class="stat-label">FEELING CONFIDENT</span><span class="stat-icon peach">♡</span></div><div class="stat-number"><span id="confidentCount">0</span><small class="stat-unit">topics</small></div><p class="stat-caption">Topics you feel ready for</p><div class="mini-flower-row" aria-hidden="true"><span>✿</span><span>✿</span><span>✿</span><span>✿</span><span>✿</span></div></article>
           <article class="stat-card"><div class="stat-top"><span class="stat-label">NEEDS A LITTLE LOVE</span><span class="stat-icon lilac">♡</span></div><div class="stat-number"><span id="needsWorkCount">0</span><small class="stat-unit">topics</small></div><p class="stat-caption">Learning or practising</p><div class="needles" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></article>
         </section>
@@ -64,7 +65,7 @@
           <section class="panel timer-panel"><div class="panel-heading"><div><p class="eyebrow">TAKE A BREATH</p><h2>Focus nook</h2></div><span class="timer-sparkle" aria-hidden="true">✧</span></div><p class="panel-intro">A small pocket of time, just for you.</p><div class="timer-visual"><div class="timer-ring"><div class="timer-inner"><span class="timer-label">YOUR FOCUS TIME</span><strong id="timerDisplay">25:00</strong><span id="timerMessage">one thing at a time</span></div></div></div><div class="timer-actions"><button class="button button-primary" id="timerStart">Begin focus</button><button class="button button-quiet" id="timerReset">Reset</button></div><div class="timer-footer"><span>☕</span> Stretch, sip water, and rest your eyes between sessions.</div></section>
         </div>
 
-        <section class="source-strip"><div class="source-seal">✓</div><div><strong>Built around the Cambridge syllabus</strong><p>The current starter includes Mathematics 9709 topic headings for 2026–2027. Other subjects will be added after their topic lists are checked.</p></div><a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-mathematics-9709/" target="_blank" rel="noreferrer">Official source ↗</a></section>
+        <section class="source-strip"><div class="source-seal">✓</div><div><strong>Built around the Cambridge syllabus</strong><p>Revision notes and original graded practice are now included for P1, M1, S1 and S2 from the 2026–2027 Mathematics 9709 syllabus.</p></div><a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-mathematics-9709/" target="_blank" rel="noreferrer">Official source ↗</a></section>
       </section>
 
       <section class="view" id="view-syllabus" aria-labelledby="syllabusHeading">
@@ -78,8 +79,8 @@
         <div class="library-toolbar panel">
           <div class="toolbar-top"><div><p class="eyebrow">FIND YOUR PLACE</p><h2>The syllabus shelf</h2></div><a class="official-link" href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-mathematics-9709/" target="_blank" rel="noreferrer">Read official syllabus ↗</a></div>
           <div class="filters-grid">
-            <label class="filter-field"><span>Qualification</span><select id="qualificationSelect"><option value="AS">AS Level</option><option value="A2">Full A Level</option></select></label>
-            <label class="filter-field route-field"><span>Paper route</span><select id="routeSelect"><option value="AS_P1_P2">P1 + P2 · Pure only (AS-only)</option><option value="AS_P1_P4">P1 + P4 · Pure + Mechanics</option><option value="AS_P1_P5" selected>P1 + P5 · Pure + Statistics 1</option></select></label>
+            <label class="filter-field"><span>Study view</span><select id="qualificationSelect"><option value="ALL">All requested modules</option><option value="AS">AS exam route</option><option value="A2">Full A Level route</option></select></label>
+            <label class="filter-field route-field"><span>Paper route</span><select id="routeSelect"><option value="AS_P1_P2">P1 + P2 · Pure only (AS-only)</option><option value="AS_P1_P4">P1 + P4 · Pure + Mechanics</option><option value="AS_P1_P5">P1 + P5 · Pure + Statistics 1</option></select></label>
             <label class="filter-field search-field"><span>Find a topic</span><div class="search-wrap"><span aria-hidden="true">⌕</span><input id="topicSearch" type="search" placeholder="e.g. differentiation" autocomplete="off"></div></label>
             <label class="filter-field status-field"><span>Show</span><select id="statusFilter"><option value="ALL">All topics</option><option value="Not started">Not started</option><option value="Learning">Learning</option><option value="Practising">Practising</option><option value="Confident">Confident</option><option value="NEEDS_WORK">Needs practice</option></select></label>
           </div>
@@ -89,7 +90,7 @@
         <div class="syllabus-summary"><div><span class="summary-kicker">YOUR CURRENT VIEW</span><strong id="routeTitle">AS Level · P1 + P5</strong><small id="routeSubtitle">Pure Mathematics 1 and Probability & Statistics 1</small></div><div class="summary-numbers"><div><strong id="visibleTopicCount">13</strong><small>topics in view</small></div><div><strong id="viewProgress">0%</strong><small>explored</small></div></div></div>
         <div id="syllabusGroups" class="syllabus-groups"></div>
         <div id="emptySearch" class="empty-state hidden"><span>⌕</span><h3>No little matches yet</h3><p>Try a shorter search or choose a different status filter.</p></div>
-        <div class="syllabus-footnote"><span class="footnote-flower">✿</span><p><strong>A note about accuracy:</strong> This starter contains official topic headings, not every detailed learning objective. Use Cambridge's linked syllabus PDF for the complete wording. Topic status and personal notes are saved only in this browser.</p></div>
+        <div class="syllabus-footnote"><span class="footnote-flower">✿</span><p><strong>A note about accuracy:</strong> The notes are original revision explanations mapped to the Cambridge 9709 syllabus for 2026–2027. Practice questions are original Cambridge-style questions, not copied past-paper items. Check the official syllabus for definitive scope; progress and personal notes are saved in this browser.</p></div>
       </section>
 
       <section class="view" id="view-revision" aria-labelledby="revisionHeading">
@@ -104,6 +105,7 @@
     </main>
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <dialog id="studyDialog" class="study-dialog" aria-labelledby="studyDialogTitle"><div id="studyContent"></div></dialog>
   <dialog id="resetDialog" class="reset-dialog"><div class="dialog-flower">✿</div><h2>Start with a fresh page?</h2><p>This clears topic statuses, notes, and review dates saved on this device.</p><div class="dialog-actions"><button class="button button-quiet" id="cancelReset">Keep my progress</button><button class="button button-danger" id="confirmReset">Reset progress</button></div></dialog>
 </body>
 </html>

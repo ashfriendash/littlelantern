@@ -35,21 +35,21 @@ window.LITTLE_LANTERN_SYLLABUS = {
         ]
       },
       {
-        code: "P4", number: "04", title: "Mechanics", qualification: ["AS", "A2"],
+        code: "P4", alias: "M1", number: "04", title: "Mechanics", qualification: ["AS", "A2"],
         topics: [
           ["4.1", "Forces and equilibrium"], ["4.2", "Kinematics of motion in a straight line"],
           ["4.3", "Momentum"], ["4.4", "Newton’s laws of motion"], ["4.5", "Energy, work and power"]
         ]
       },
       {
-        code: "P5", number: "05", title: "Probability & Statistics 1", qualification: ["AS", "A2"],
+        code: "P5", alias: "S1", number: "05", title: "Probability & Statistics 1", qualification: ["AS", "A2"],
         topics: [
           ["5.1", "Representation of data"], ["5.2", "Permutations and combinations"], ["5.3", "Probability"],
           ["5.4", "Discrete random variables"], ["5.5", "The normal distribution"]
         ]
       },
       {
-        code: "P6", number: "06", title: "Probability & Statistics 2", qualification: ["A2"],
+        code: "P6", alias: "S2", number: "06", title: "Probability & Statistics 2", qualification: ["A2"],
         topics: [
           ["6.1", "The Poisson distribution"], ["6.2", "Linear combinations of random variables"],
           ["6.3", "Continuous random variables"], ["6.4", "Sampling and estimation"], ["6.5", "Hypothesis tests"]
@@ -63,8 +63,11 @@ window.LITTLE_LANTERN_SYLLABUS = {
         { id: "AS_P1_P5", label: "P1 + P5 · Pure + Statistics 1", shortLabel: "P1 + P5", subtitle: "Pure Mathematics 1 and Probability & Statistics 1", papers: ["P1", "P5"], note: "AS route: Pure Mathematics 1 plus Probability & Statistics 1. Choose the route your school entered you for." }
       ],
       A2: [
-        { id: "A_P1_P3_P4_P5", label: "P1 + P3 + P4 + P5 · Mechanics + Statistics 1", shortLabel: "P1 + P3 + P4 + P5", subtitle: "Pure Mathematics 1, Pure Mathematics 3, Mechanics, and Probability & Statistics 1", papers: ["P1", "P3", "P4", "P5"], note: "Full A Level route: Pure Mathematics 1 and 3, Mechanics, and Probability & Statistics 1." },
-        { id: "A_P1_P3_P5_P6", label: "P1 + P3 + P5 + P6 · Statistics 1 + 2", shortLabel: "P1 + P3 + P5 + P6", subtitle: "Pure Mathematics 1, Pure Mathematics 3, and Probability & Statistics 1 and 2", papers: ["P1", "P3", "P5", "P6"], note: "Full A Level route: Pure Mathematics 1 and 3, Probability & Statistics 1 and 2. Paper 5 is a prerequisite for Paper 6." }
+        { id: "A_P1_P3_P4_P5", label: "P1 + P3 + P4 + P5 · Mechanics + Statistics 1", shortLabel: "P1 + P3 + P4 + P5", subtitle: "Pure Mathematics 1, Pure Mathematics 3, Mechanics, and Probability & Statistics 1", papers: ["P1", "P3", "P4", "P5"], note: "Official Full A Level route: Pure Mathematics 1 and 3, Mechanics, and Probability & Statistics 1." },
+        { id: "A_P1_P3_P5_P6", label: "P1 + P3 + P5 + P6 · Statistics 1 + 2", shortLabel: "P1 + P3 + P5 + P6", subtitle: "Pure Mathematics 1, Pure Mathematics 3, and Probability & Statistics 1 and 2", papers: ["P1", "P3", "P5", "P6"], note: "Official Full A Level route: Pure Mathematics 1 and 3, Probability & Statistics 1 and 2. Paper 5 is a prerequisite for Paper 6." }
+      ],
+      ALL: [
+        { id: "ALL_REQUESTED", label: "P1 + M1 + S1 + S2 · All revision modules", shortLabel: "P1 + M1 + S1 + S2", subtitle: "Study library: Pure 1, Mechanics, Statistics 1 and Statistics 2", papers: ["P1", "P4", "P5", "P6"], note: "Study-library view only, not an official exam entry combination. It groups all four modules you asked to revise. Full A Level exam routes also require Paper 3." }
       ]
     }
   }

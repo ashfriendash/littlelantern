@@ -1,43 +1,44 @@
 # Little Lantern 🏮
 
-A cozy, lightweight study companion for Cambridge AS & A Level students. This is the first working starter version, with a topic-level Mathematics 9709 tracker for the 2026–2027 syllabus.
+A cozy, browser-based Cambridge International Mathematics 9709 revision library and progress tracker. This revision-pack version includes topic pages for **Pure Mathematics 1 (P1), Mechanics (M1 / Paper 4), Probability & Statistics 1 (S1 / Paper 5), and Probability & Statistics 2 (S2 / Paper 6)** using the 2026–2027 syllabus structure.
 
 ## Run it
 
-1. Download and unzip the folder.
-2. Open `index.html` in a modern browser, or use VS Code with the Live Server extension.
-3. Open **Syllabus library** and choose AS Level or Full A Level plus the paper route that matches your school entry.
-4. Change a topic status, add a note, or mark it reviewed. Your progress is stored in this browser using `localStorage`.
+1. Download and extract the project ZIP.
+2. Open the `little-lantern` folder in VS Code.
+3. Open `index.html` in a modern browser. VS Code's Live Server extension is recommended, but no build step is required.
+4. Select **All requested modules** to study P1, M1, S1 and S2 together, then choose **Open notes** on any topic.
+5. Change mastery status, add your personal notes, mark a topic reviewed, and use the revision queue. Progress is saved locally in the browser.
 
-No build step, package manager, API key, AI service, or backend is required.
+## What's included
 
-## Included
+- Cozy, readable typography: **Nunito Sans** for interface text and **Lora** for titles and note headings, with sensible fallbacks.
+- Syllabus library for the 23 headline topics in the four requested modules.
+- Topic-level revision pages with a big idea, key concepts, formula shelf, worked example, common mistakes, and practice section.
+- **71 original practice questions**, usually three per topic (warm-up, developing, challenge), with worked solutions hidden behind a reveal. Two topics also have an extension question covering sampling variance and Type II error.
+- Progress statuses: Not started, Learning, Practising, Confident.
+- Personal notes, review dates, a revision queue, a 25-minute focus timer, and JSON export / reset.
+- Local-first: no account, API key, AI service, backend or package installation is needed.
 
-- Cozy responsive dashboard and progress overview
-- Mathematics 9709 topic headings for examination in 2026 and 2027
-- AS route options: P1 + P2 (AS-only), P1 + P4, or P1 + P5
-- Full A Level route options: P1 + P3 + P4 + P5 or P1 + P3 + P5 + P6
-- Topic search and status filters
-- Topic statuses, personal notes, review dates, and a revision queue
-- 25-minute focus timer
-- Export / reset for locally stored progress
+## How the syllabus view works
 
-## Accuracy note
+The default **All requested modules** view groups P1, M1, S1 and S2 for studying. It is **a study-library grouping, not an official Cambridge exam entry combination**. The app also offers actual AS and Full A Level paper-route selections; use the combination your school entered you for. For Full A Level, Paper 3 is required in addition to P1 and the applicable applied components.
 
-The topic headings are based on Cambridge International's official syllabus overview for Mathematics 9709, examination in 2026 and 2027. This app is an independent study aid, not an official Cambridge product, and it does not reproduce every detailed learning objective. Always refer to the official syllabus PDF for definitive wording and examination requirements.
+The PDF the user supplied was used as a reference for P1 explanations and worked-method coverage. To avoid republishing that PDF's wording, the topic notes and practice questions in this app are written independently. The practice questions are inspired by the skills and structured style found in Cambridge examinations; **they are not copied past-paper questions**. The user-provided PDF has a chapter called Vectors, but vectors are not a P1 topic in the current 9709 syllabus; they belong to Pure Mathematics 3, so the revision library does not label them as P1 content.
 
-Official source: https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-mathematics-9709/
+## Accuracy notes
+
+The topic headings and paper structure are mapped to the official Cambridge International Mathematics 9709 syllabus for examinations in 2026 and 2027. These are revision summaries, not a replacement for the full official syllabus, lessons, or mark schemes. Check the official syllabus for the complete learning objectives and your teacher's paper entry.
+
+Official syllabus page: https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-mathematics-9709/
+Official 2026–2027 PDF: https://www.cambridgeinternational.org/Images/697427-2026-2027-syllabus.pdf
 
 ## Files
 
-- `index.html` — pages and structure
-- `style.css` — cozy theme, responsive layout, and interactions styling
-- `app.js` — navigation, topic status, progress, timer, export, and storage
-- `syllabus-data.js` — syllabus topic list and qualification/paper routes
+- `index.html` — app structure and pages
+- `style.css` — cozy palette, typography, responsive layout and study-note modal
+- `app.js` — navigation, topic statuses, saved progress, study notes, timer and export
+- `syllabus-data.js` — syllabus topic map and paper routes
+- `study-notes.js` — the 23 topic note packs and 71 practice questions
 
-## Next milestones
-
-1. Verify the topic list and routes against the official Mathematics syllabus for the correct exam year.
-2. Add Physics 9702 and Computer Science 9618 using their matching syllabus years.
-3. Add detailed objective-level tracking only after the current official PDFs have been checked.
-4. Test keyboard navigation, mobile layout, and save / export flows before publishing.
+Progress is stored in the current browser using `localStorage`; it doesn't automatically sync between devices or browsers. Use **Export progress** to save a backup before clearing browser data or changing devices.
