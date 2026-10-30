@@ -1,44 +1,87 @@
 # Little Lantern 🏮
 
-A cozy, browser-based Cambridge International Mathematics 9709 revision library and progress tracker. This revision-pack version includes topic pages for **Pure Mathematics 1 (P1), Mechanics (M1 / Paper 4), Probability & Statistics 1 (S1 / Paper 5), and Probability & Statistics 2 (S2 / Paper 6)** using the 2026–2027 syllabus structure.
+Little Lantern is an independent, browser-based Cambridge International A Level revision companion for Mathematics 9709, Physics 9702, and Computer Science 9618. It is designed as a calm study nook: warm parchment colours, sage details, soft lantern illustrations, clear reading spaces, and low-pressure progress tracking.
 
-## Run it
+## Run it locally
 
-1. Download and extract the project ZIP.
-2. Open the `little-lantern` folder in VS Code.
-3. Open `index.html` in a modern browser. VS Code's Live Server extension is recommended, but no build step is required.
-4. Select **All requested modules** to study P1, M1, S1 and S2 together, then choose **Open notes** on any topic.
-5. Change mastery status, add your personal notes, mark a topic reviewed, and use the revision queue. Progress is saved locally in the browser.
+1. Extract the `little-lantern` folder.
+2. Open the folder in VS Code.
+3. Open `index.html` in a modern browser. VS Code Live Server is recommended, but there is no build step and no package installation is required.
+4. Select a subject from the welcome screen or use the subject tabs in the syllabus library.
+5. Open a topic's revision notes, add a personal note, set a mastery status, or mark it reviewed.
 
-## What's included
+The app uses local browser storage. It does not create an account or sync progress to a server. Use **Export backup** to download your planner, notes, flashcard schedule, and topic progress as JSON. Use **Import backup** to restore a previous Little Lantern backup in the same or another browser. Import replaces the progress currently saved in that browser after confirmation.
 
-- Cozy, readable typography: **Nunito Sans** for interface text and **Lora** for titles and note headings, with sensible fallbacks.
-- Syllabus library for the 23 headline topics in the four requested modules.
-- Topic-level revision pages with a big idea, key concepts, formula shelf, worked example, common mistakes, and practice section.
-- **71 original practice questions**, usually three per topic (warm-up, developing, challenge), with worked solutions hidden behind a reveal. Two topics also have an extension question covering sampling variance and Type II error.
-- Progress statuses: Not started, Learning, Practising, Confident.
-- Personal notes, review dates, a revision queue, a 25-minute focus timer, and JSON export / reset.
-- Local-first: no account, API key, AI service, backend or package installation is needed.
+## Included study libraries
 
-## How the syllabus view works
+- **Mathematics 9709:** 38 topic packs covering the six listed paper areas: Pure Mathematics 1, Pure Mathematics 2, Pure Mathematics 3, Mechanics, Probability & Statistics 1, and Probability & Statistics 2.
+- **Physics 9702:** 25 theory topics plus one practical-skills pack, covering AS topics 1–11, A Level topics 12–25, and practical skills, uncertainty, and evaluation.
+- **Computer Science 9618:** 44 topic packs across Papers 1–4, from data representation and networks to algorithms, databases, advanced theory, object-oriented programming, and file processing.
+- **108 topic packs** with key ideas, formula/concept reminders, worked examples, exam approach notes, common traps, and original practice questions.
 
-The default **All requested modules** view groups P1, M1, S1 and S2 for studying. It is **a study-library grouping, not an official Cambridge exam entry combination**. The app also offers actual AS and Full A Level paper-route selections; use the combination your school entered you for. For Full A Level, Paper 3 is required in addition to P1 and the applicable applied components.
+## Study tools
 
-The PDF the user supplied was used as a reference for P1 explanations and worked-method coverage. To avoid republishing that PDF's wording, the topic notes and practice questions in this app are written independently. The practice questions are inspired by the skills and structured style found in Cambridge examinations; **they are not copied past-paper questions**. The user-provided PDF has a chapter called Vectors, but vectors are not a P1 topic in the current 9709 syllabus; they belong to Pure Mathematics 3, so the revision library does not label them as P1 content.
+- A welcome screen and responsive study dashboard.
+- Syllabus library with subject, exam route, topic search, and status filters.
+- Topic mastery states: Not started, Learning, Practising, and Confident.
+- Personal notes saved alongside each topic.
+- Revision queue based on topic status and review dates.
+- A date-based study planner with subject, topic, duration, completion, and removal controls.
+- Flashcards generated from the included revision packs. Cards can be rated Again or I knew it and receive a simple spaced-review date.
+- A short interactive Computer Science concept quiz with feedback and explanations.
+- A guided pseudocode trace-table exercise with per-cell checking.
+- A 25-minute focus timer.
+- Progress export and validated progress import.
+- Responsive mobile navigation, keyboard focus styles, reduced-motion support, descriptive labels, and Open Graph / social-preview metadata.
 
-## Accuracy notes
+## Syllabus alignment and exam-year caution
 
-The topic headings and paper structure are mapped to the official Cambridge International Mathematics 9709 syllabus for examinations in 2026 and 2027. These are revision summaries, not a replacement for the full official syllabus, lessons, or mark schemes. Check the official syllabus for the complete learning objectives and your teacher's paper entry.
+The syllabus period displayed in Little Lantern is the period its topic headings and revision notes were originally mapped against. Cambridge's syllabus year means the calendar year in which the examination is taken.
 
-Official syllabus page: https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-mathematics-9709/
-Official 2026–2027 PDF: https://www.cambridgeinternational.org/Images/697427-2026-2027-syllabus.pdf
+| Subject | Mapping in this project | Important note |
+|---|---|---|
+| Mathematics 9709 | 2026–2027 | Cambridge has published a newer 2028–2030 syllabus. The present notes have not been fully re-audited against that newer specification. |
+| Physics 9702 | 2025–2027 | Cambridge has published a newer 2028–2030 syllabus. The present notes have not been fully re-audited against that newer specification. |
+| Computer Science 9618 | 2027–2029 | Use the matching Cambridge syllabus and pseudocode guide, plus your school's programming-language instructions. |
 
-## Files
+Before studying, confirm the examination year and route that apply to your entry. A pack with a matching topic heading is not proof that every sub-point in the official syllabus is covered. Practical assessment requirements, required depth, command words, permitted programming language, and component combinations should be checked against the official documents.
 
-- `index.html` — app structure and pages
-- `style.css` — cozy palette, typography, responsive layout and study-note modal
-- `app.js` — navigation, topic statuses, saved progress, study notes, timer and export
-- `syllabus-data.js` — syllabus topic map and paper routes
-- `study-notes.js` — the 23 topic note packs and 71 practice questions
+Official Cambridge subject pages:
 
-Progress is stored in the current browser using `localStorage`; it doesn't automatically sync between devices or browsers. Use **Export progress** to save a backup before clearing browser data or changing devices.
+- Mathematics 9709: https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-mathematics-9709/
+- Physics 9702: https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-physics-9702/
+- Computer Science 9618: https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-computer-science-9618/
+
+Cambridge FAQ on choosing a syllabus year: https://help.cambridgeinternational.org/hc/en-gb/articles/37189948709522-General-FAQ-Which-syllabus-year-should-I-use
+
+## Accuracy, ownership, and limitations
+
+Little Lantern is an independent student revision project, not an official Cambridge International product and not endorsed by Cambridge. The revision explanations and practice questions are independently written; they are not copied from Cambridge past papers. The flashcards are generated from those notes, and the CS quiz is a supplementary starter set rather than a full exam simulator.
+
+Use the official specification and your teacher's instructions as the final authority. Always check working, units, command words, practical requirements, and programming conventions. A learner's progress is stored in the current browser profile only; clearing browser data can remove it, so keep a backup if the progress matters to you.
+
+## Publishing with GitHub Pages
+
+- Keep `index.html`, `style.css`, all JavaScript files, `favicon.svg`, and the preview image together in the published directory.
+- Configure Pages to publish from the branch and folder containing `index.html` (repository root or `/docs`).
+- After publishing, open the public URL on desktop and mobile and check the browser console, all navigation items, all topic notes, import/export, and all local assets.
+- For social preview cards, replace the relative `og:image` and `twitter:image` values with the absolute public URL of `share-card.png` once the final site URL is known.
+
+## Project files
+
+- `index.html` — welcome screen and application structure
+- `style.css` — responsive hearthlight visual theme and components
+- `app.js` — navigation, filtering, progress, notes, planner, flashcards, CS quiz, timer, and backup import/export
+- `syllabus-data.js` — Mathematics 9709 syllabus headings and exam routes
+- `study-notes.js` — Mathematics revision packs
+- `physics-cs-data.js` — Physics and Computer Science syllabus headings and routes
+- `physics-notes.js` — Physics revision packs
+- `cs-as-theory-notes.js` — Computer Science theory packs
+- `cs-as-programming-notes.js` — Computer Science problem-solving and programming packs
+- `cs-a2-notes.js` — Computer Science advanced theory and further programming packs
+- `favicon.svg` — browser tab icon
+- `share-card.png` / `share-card.svg` — social preview artwork
+
+## Opening screen behavior
+
+The welcome screen appears when Little Lantern is opened in a fresh browser tab. Dismissing it is remembered only for that tab session, so a new tab or fresh launch shows it again. To test it immediately in the same tab, close that tab and open `index.html` in a new one.

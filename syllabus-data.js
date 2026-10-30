@@ -9,6 +9,7 @@ window.LITTLE_LANTERN_SYLLABUS = {
     subjectCode: "9709",
     subjectName: "Mathematics",
     syllabusYear: "2026–2027",
+    mappingNote: "This pack is mapped to the 2026–2027 Mathematics syllabus. Cambridge has published a newer 2028–2030 specification; these notes have not yet been fully re-audited against that version.",
     sourceUrl: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-mathematics-9709/",
     sourceTitle: "Cambridge International AS & A Level Mathematics 9709",
     papers: [
@@ -67,7 +68,7 @@ window.LITTLE_LANTERN_SYLLABUS = {
         { id: "A_P1_P3_P5_P6", label: "P1 + P3 + P5 + P6 · Statistics 1 + 2", shortLabel: "P1 + P3 + P5 + P6", subtitle: "Pure Mathematics 1, Pure Mathematics 3, and Probability & Statistics 1 and 2", papers: ["P1", "P3", "P5", "P6"], note: "Official Full A Level route: Pure Mathematics 1 and 3, Probability & Statistics 1 and 2. Paper 5 is a prerequisite for Paper 6." }
       ],
       ALL: [
-        { id: "ALL_REQUESTED", label: "P1 + M1 + S1 + S2 · All revision modules", shortLabel: "P1 + M1 + S1 + S2", subtitle: "Study library: Pure 1, Mechanics, Statistics 1 and Statistics 2", papers: ["P1", "P4", "P5", "P6"], note: "Study-library view only, not an official exam entry combination. It groups all four modules you asked to revise. Full A Level exam routes also require Paper 3." }
+        { id: "ALL_REQUESTED", label: "All six papers · Complete revision library", shortLabel: "P1–P6", subtitle: "Study library: Pure 1, Pure 2, Pure 3, Mechanics, Statistics 1 and Statistics 2", papers: ["P1", "P2", "P3", "P4", "P5", "P6"], note: "Study-library view only, not an official Cambridge exam entry combination. Use the AS or Full A Level selector to see an actual route; not every paper is taken by every candidate." }
       ]
     }
   }

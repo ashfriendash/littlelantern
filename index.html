@@ -3,15 +3,68 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f6ef">
+  <meta name="theme-color" content="#f4eee2">
+  <meta name="color-scheme" content="light">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Little Lantern — a gentle A Level study space">
+  <meta property="og:description" content="A calm, independent Cambridge A Level revision companion for Mathematics, Physics and Computer Science.">
+  <meta property="og:image" content="share-card.png">
+  <meta property="og:image:alt" content="Little Lantern study nook with a warm glowing lantern and soft botanical details">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Little Lantern — a gentle A Level study space">
+  <meta name="twitter:description" content="A calm revision nook for Mathematics, Physics and Computer Science.">
+  <meta name="twitter:image" content="share-card.png">
+  <meta name="twitter:image:alt" content="Little Lantern study nook with a warm glowing lantern and soft botanical details">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <meta name="description" content="Little Lantern — a calm Cambridge A Level syllabus and revision companion.">
   <title>Little Lantern — a gentle study space</title>
   <link rel="stylesheet" href="style.css">
   <script defer src="syllabus-data.js"></script>
   <script defer src="study-notes.js"></script>
+  <script defer src="physics-cs-data.js"></script>
+  <script defer src="physics-notes.js"></script>
+  <script defer src="cs-as-theory-notes.js"></script>
+  <script defer src="cs-as-programming-notes.js"></script>
+  <script defer src="cs-a2-notes.js"></script>
   <script defer src="app.js"></script>
 </head>
-<body>
+<body class="intro-pending">
+  <section class="opening-screen" id="openingScreen" aria-labelledby="openingTitle">
+    <div class="opening-shell">
+      <div class="opening-topline">
+        <a class="opening-brand" href="#welcome" aria-label="Little Lantern introduction">
+          <span class="brand-mark opening-brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none"><path d="M17 11h14l-2 5H19l-2-5Z" fill="currentColor"/><path d="M19 16h10v4l4 5v11H15V25l4-5v-4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M20 28c0-2.2 1.5-4 4-6 2.5 2 4 3.8 4 6a4 4 0 1 1-8 0Z" fill="#E6B56E"/><path d="M12 11 9 8m27 3 3-3M24 5V2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span><strong>little lantern</strong><small>your study nook</small></span>
+        </a>
+        <span class="opening-motto"><span class="motto-dot"></span> A calmer way to study</span>
+      </div>
+      <div class="opening-hero">
+        <div class="opening-copy">
+          <p class="eyebrow">SMALL STEPS. BRIGHT IDEAS. <span class="eyebrow-flower">✿</span></p>
+          <h1 id="openingTitle">A little light<br>for your <em>next step.</em></h1>
+          <p class="opening-description">A gentle Cambridge A Level study space for learning the ideas, practising the hard parts, and seeing how far you’ve come.</p>
+          <div class="opening-actions"><button class="button button-primary opening-cta" id="enterStudy">Enter my study nook <span aria-hidden="true">↗</span></button><button class="opening-skip" id="skipWelcome">Just let me in</button></div>
+          <div class="opening-trust"><span>✧</span><span>Your progress stays in this browser.</span><span>·</span><span>Study one topic at a time.</span></div>
+        </div>
+        <div class="opening-art" aria-hidden="true">
+          <div class="opening-orbit orbit-one"></div><div class="opening-orbit orbit-two"></div><div class="opening-moon"></div><span class="opening-star star-a">✦</span><span class="opening-star star-b">✧</span><span class="opening-star star-c">·</span>
+          <div class="opening-lantern"><div class="lantern-top"></div><div class="lantern-cap"></div><div class="lantern-glass"><div class="lantern-flame"></div><div class="lantern-glow"></div></div><div class="lantern-base"></div></div>
+          <div class="opening-leaf leaf-a"></div><div class="opening-leaf leaf-b"></div><div class="opening-leaf leaf-c"></div><div class="opening-ground"></div>
+          <div class="art-caption"><span class="caption-spark">✦</span><span><strong>One page at a time</strong><small>there is no rush</small></span></div>
+        </div>
+      </div>
+      <div class="opening-subject-heading"><div><p class="eyebrow">YOUR STUDY SHELF</p><h2>Where shall we begin?</h2></div><p>Pick a subject to open its syllabus library.</p></div>
+      <div class="opening-subjects">
+        <button class="opening-subject-card" data-start-subject="9709"><span class="opening-subject-icon math-symbol">∑</span><span class="opening-subject-copy"><strong>Mathematics</strong><small>9709 · 2026–2027 spec</small></span><span class="opening-subject-arrow">↗</span></button>
+        <button class="opening-subject-card" data-start-subject="9702"><span class="opening-subject-icon physics-symbol">ϟ</span><span class="opening-subject-copy"><strong>Physics</strong><small>9702 · 2025–2027 spec</small></span><span class="opening-subject-arrow">↗</span></button>
+        <button class="opening-subject-card" data-start-subject="9618"><span class="opening-subject-icon cs-symbol">{ }</span><span class="opening-subject-copy"><strong>Computer Science</strong><small>9618 · 2027–2029</small></span><span class="opening-subject-arrow">↗</span></button>
+      </div>
+      <p class="opening-footnote">Little Lantern is an independent revision companion, not an official Cambridge product.</p>
+    </div>
+  </section>
   <div class="app-shell">
     <aside class="sidebar" aria-label="Main navigation">
       <a class="brand" href="#today" aria-label="Little Lantern home">
@@ -22,10 +75,13 @@
       </a>
 
       <div class="nav-label">YOUR DESK</div>
-      <nav class="main-nav">
+      <nav class="main-nav" aria-label="Study sections">
         <button class="nav-item active" data-view="today"><span class="nav-icon">⌂</span><span>Today</span><span class="nav-dot"></span></button>
-        <button class="nav-item" data-view="syllabus"><span class="nav-icon">▤</span><span>Syllabus library</span></button>
-        <button class="nav-item" data-view="revision"><span class="nav-icon">✳</span><span>Revision nook</span></button>
+        <button class="nav-item" data-view="syllabus"><span class="nav-icon">▤</span><span>Syllabus</span></button>
+        <button class="nav-item" data-view="revision"><span class="nav-icon">✳</span><span>Review</span></button>
+        <button class="nav-item" data-view="planner"><span class="nav-icon">▦</span><span>Plan</span></button>
+        <button class="nav-item" data-view="flashcards"><span class="nav-icon">▤</span><span>Cards</span></button>
+        <button class="nav-item" data-view="practice"><span class="nav-icon">⌘</span><span>CS Lab</span></button>
       </nav>
 
       <div class="sidebar-grow"></div>
@@ -45,7 +101,7 @@
 
       <section class="view active" id="view-today" aria-labelledby="todayHeading">
         <div class="page-heading">
-          <div><p class="eyebrow">YOUR GENTLE STUDY SPACE <span class="eyebrow-flower">✿</span></p><h1 id="todayHeading">Make a little <em>progress.</em></h1><p class="page-subtitle">A calm place to see what you know, what needs practice, and what comes next.</p></div>
+          <div><p class="eyebrow">YOUR GENTLE STUDY SPACE <span class="eyebrow-flower">✿</span></p><h1 id="todayHeading">Make a little <em>progress.</em></h1><p class="page-subtitle" id="todaySubtitle">A calm place to see what you know, what needs practice, and what comes next.</p></div>
         </div>
 
         <section class="welcome-card">
@@ -62,22 +118,22 @@
 
         <div class="dashboard-columns">
           <section class="panel next-panel"><div class="panel-heading"><div><p class="eyebrow">A SOFT PLACE TO BEGIN</p><h2>Today's little steps</h2></div><button class="text-button" data-go="revision">See all <span aria-hidden="true">→</span></button></div><p class="panel-intro">A few topics to gently move forward. You can change these anytime.</p><div id="todaySteps" class="step-list"></div></section>
-          <section class="panel timer-panel"><div class="panel-heading"><div><p class="eyebrow">TAKE A BREATH</p><h2>Focus nook</h2></div><span class="timer-sparkle" aria-hidden="true">✧</span></div><p class="panel-intro">A small pocket of time, just for you.</p><div class="timer-visual"><div class="timer-ring"><div class="timer-inner"><span class="timer-label">YOUR FOCUS TIME</span><strong id="timerDisplay">25:00</strong><span id="timerMessage">one thing at a time</span></div></div></div><div class="timer-actions"><button class="button button-primary" id="timerStart">Begin focus</button><button class="button button-quiet" id="timerReset">Reset</button></div><div class="timer-footer"><span>☕</span> Stretch, sip water, and rest your eyes between sessions.</div></section>
+          <section class="panel timer-panel"><div class="panel-heading"><div><p class="eyebrow">TAKE A BREATH</p><h2>Focus nook</h2></div><span class="timer-sparkle" aria-hidden="true">✧</span></div><p class="panel-intro">A warm little pocket of time, just for you.</p><div class="timer-visual"><div class="timer-ring"><div class="timer-inner"><span class="timer-label">YOUR FOCUS TIME</span><strong id="timerDisplay">25:00</strong><span id="timerMessage">one thing at a time</span></div></div></div><div class="timer-actions"><button class="button button-primary" id="timerStart">Begin focus</button><button class="button button-quiet" id="timerReset">Reset</button></div><div class="timer-footer"><span>☕</span> Stretch, sip water, and rest your eyes between sessions.</div></section>
         </div>
 
-        <section class="source-strip"><div class="source-seal">✓</div><div><strong>Built around the Cambridge syllabus</strong><p>Revision notes and original graded practice are now included for P1, M1, S1 and S2 from the 2026–2027 Mathematics 9709 syllabus.</p></div><a href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-mathematics-9709/" target="_blank" rel="noreferrer">Official source ↗</a></section>
+        <section class="source-strip"><div class="source-seal">✓</div><div><strong id="sourceStripTitle">Built around the Cambridge syllabus</strong><p id="sourceStripText">Original revision notes and practice for Cambridge A Level topics.</p></div><a id="sourceStripLink" href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-mathematics-9709/" target="_blank" rel="noreferrer">Official source ↗</a></section>
       </section>
 
       <section class="view" id="view-syllabus" aria-labelledby="syllabusHeading">
-        <div class="page-heading syllabus-heading"><div><p class="eyebrow">YOUR COURSE, MADE GENTLER <span class="eyebrow-flower">✿</span></p><h1 id="syllabusHeading">Syllabus <em>library.</em></h1><p class="page-subtitle">Choose your route, find a topic, and keep your progress in one place.</p></div><span class="syllabus-stamp">CAMBRIDGE<br><strong>9709</strong><br>2026–2027</span></div>
-        <div class="subject-tabs" role="tablist" aria-label="Subject">
-          <button class="subject-tab active" role="tab" aria-selected="true" data-subject="9709"><span class="subject-tab-icon">∑</span><span><strong>Mathematics</strong><small>9709 · 2026–2027</small></span><span class="tab-check">✓</span></button>
-          <button class="subject-tab coming-soon" role="tab" aria-selected="false" disabled><span class="subject-tab-icon physics-icon">ϟ</span><span><strong>Physics</strong><small>9702 · coming next</small></span><span class="soon-label">SOON</span></button>
-          <button class="subject-tab coming-soon" role="tab" aria-selected="false" disabled><span class="subject-tab-icon cs-icon">{ }</span><span><strong>Computer Science</strong><small>9618 · coming next</small></span><span class="soon-label">SOON</span></button>
+        <div class="page-heading syllabus-heading"><div><p class="eyebrow">YOUR COURSE, MADE GENTLER <span class="eyebrow-flower">✿</span></p><h1 id="syllabusHeading">Syllabus <em>library.</em></h1><p class="page-subtitle" id="syllabusSubtitle">Choose your route, find a topic, and keep your progress in one place.</p></div><span class="syllabus-stamp" id="syllabusStamp">CAMBRIDGE<br><strong>9709</strong><br>2026–2027</span></div>
+        <div class="subject-tabs" role="group" aria-label="Choose a subject">
+          <button class="subject-tab active" aria-pressed="true" data-subject="9709"><span class="subject-tab-icon">∑</span><span><strong>Mathematics</strong><small>9709 · 2026–2027 spec</small></span><span class="tab-check">✓</span></button>
+          <button class="subject-tab" aria-pressed="false" data-subject="9702"><span class="subject-tab-icon physics-icon">ϟ</span><span><strong>Physics</strong><small>9702 · 2025–2027 spec</small></span><span class="tab-check">✓</span></button>
+          <button class="subject-tab" aria-pressed="false" data-subject="9618"><span class="subject-tab-icon cs-icon">{ }</span><span><strong>Computer Science</strong><small>9618 · 2027–2029</small></span><span class="tab-check">✓</span></button>
         </div>
 
         <div class="library-toolbar panel">
-          <div class="toolbar-top"><div><p class="eyebrow">FIND YOUR PLACE</p><h2>The syllabus shelf</h2></div><a class="official-link" href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-mathematics-9709/" target="_blank" rel="noreferrer">Read official syllabus ↗</a></div>
+          <div class="toolbar-top"><div><p class="eyebrow">FIND YOUR PLACE</p><h2>The syllabus shelf</h2></div><a class="official-link" id="officialSyllabusLink" href="https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-mathematics-9709/" target="_blank" rel="noreferrer">Read official syllabus ↗</a></div>
           <div class="filters-grid">
             <label class="filter-field"><span>Study view</span><select id="qualificationSelect"><option value="ALL">All requested modules</option><option value="AS">AS exam route</option><option value="A2">Full A Level route</option></select></label>
             <label class="filter-field route-field"><span>Paper route</span><select id="routeSelect"><option value="AS_P1_P2">P1 + P2 · Pure only (AS-only)</option><option value="AS_P1_P4">P1 + P4 · Pure + Mechanics</option><option value="AS_P1_P5">P1 + P5 · Pure + Statistics 1</option></select></label>
@@ -90,7 +146,7 @@
         <div class="syllabus-summary"><div><span class="summary-kicker">YOUR CURRENT VIEW</span><strong id="routeTitle">AS Level · P1 + P5</strong><small id="routeSubtitle">Pure Mathematics 1 and Probability & Statistics 1</small></div><div class="summary-numbers"><div><strong id="visibleTopicCount">13</strong><small>topics in view</small></div><div><strong id="viewProgress">0%</strong><small>explored</small></div></div></div>
         <div id="syllabusGroups" class="syllabus-groups"></div>
         <div id="emptySearch" class="empty-state hidden"><span>⌕</span><h3>No little matches yet</h3><p>Try a shorter search or choose a different status filter.</p></div>
-        <div class="syllabus-footnote"><span class="footnote-flower">✿</span><p><strong>A note about accuracy:</strong> The notes are original revision explanations mapped to the Cambridge 9709 syllabus for 2026–2027. Practice questions are original Cambridge-style questions, not copied past-paper items. Check the official syllabus for definitive scope; progress and personal notes are saved in this browser.</p></div>
+        <div class="syllabus-footnote"><span class="footnote-flower">✿</span><p id="syllabusAccuracyText"><strong>A note about accuracy:</strong> These are independently written revision notes and original practice questions mapped to the selected subject’s syllabus. Check the exam year shown above and use the official Cambridge specification as the final authority. Progress and personal notes are saved in this browser.</p></div>
       </section>
 
       <section class="view" id="view-revision" aria-labelledby="revisionHeading">
@@ -98,7 +154,59 @@
         <div class="revision-intro"><div class="revision-intro-art" aria-hidden="true">✿</div><div><h2>Follow the next little light.</h2><p>These suggestions come from your topic statuses. Mark topics as you learn, and your list will adapt.</p></div></div>
         <div class="revision-controls"><div><p class="eyebrow">YOUR REVISION QUEUE</p><h2 id="revisionListTitle">A few good places to begin</h2></div><button class="button button-quiet" data-go="syllabus">Browse syllabus ↗</button></div>
         <div id="revisionList" class="revision-list"></div>
-        <section class="settings-panel panel"><div class="settings-copy"><span class="settings-icon">✧</span><div><h3>Your study space, your way</h3><p>Export a backup of your topic progress and notes, or reset the local demo to start afresh.</p></div></div><div class="settings-actions"><button class="button button-light-bordered" id="exportProgress">Export progress</button><button class="button button-danger-quiet" id="resetProgress">Reset demo progress</button></div></section>
+        <section class="settings-panel panel"><div class="settings-copy"><span class="settings-icon">✧</span><div><h3>Your study space, your way</h3><p>Export or restore your topic progress and notes. Your study data stays in this browser unless you back it up.</p></div></div><div class="settings-actions"><button class="button button-light-bordered" id="exportProgress">Export backup</button><button class="button button-light-bordered" id="importProgress">Import backup</button><input id="progressFile" class="sr-only" type="file" accept="application/json,.json"><button class="button button-danger-quiet" id="resetProgress">Reset my progress</button></div></section>
+      </section>
+
+      <section class="view" id="view-planner" aria-labelledby="plannerHeading">
+        <div class="page-heading"><div><p class="eyebrow">A PLAN THAT LEAVES ROOM TO BREATHE <span class="eyebrow-flower">✿</span></p><h1 id="plannerHeading">Study <em>planner.</em></h1><p class="page-subtitle">Choose a small, realistic study session. Your plan stays on this device.</p></div></div>
+        <section class="planner-intro panel"><span class="planner-sun" aria-hidden="true">☼</span><div><h2>Little by little adds up.</h2><p>Plan a topic, choose a date, and give it a time that feels manageable. You can move or remove a session whenever you need to.</p></div></section>
+        <section class="planner-builder panel" aria-labelledby="plannerFormHeading">
+          <div class="panel-heading"><div><p class="eyebrow">MAKE A SMALL PLAN</p><h2 id="plannerFormHeading">Add a study session</h2></div><span class="planner-form-mark" aria-hidden="true">✎</span></div>
+          <form id="plannerForm" class="planner-form">
+            <label class="filter-field"><span>Subject</span><select id="plannerSubject"><option value="9709">Mathematics · 9709</option><option value="9702">Physics · 9702</option><option value="9618">Computer Science · 9618</option></select></label>
+            <label class="filter-field"><span>Topic</span><select id="plannerTopic" required></select></label>
+            <label class="filter-field"><span>Date</span><input id="plannerDate" type="date" required></label>
+            <label class="filter-field"><span>Time</span><select id="plannerDuration"><option value="15">15 minutes</option><option value="25" selected>25 minutes</option><option value="40">40 minutes</option><option value="50">50 minutes</option><option value="60">60 minutes</option></select></label>
+            <button class="button button-primary planner-add" type="submit">Add to my plan <span aria-hidden="true">＋</span></button>
+          </form>
+        </section>
+        <div class="planner-list-heading"><div><p class="eyebrow">YOUR UPCOMING SESSIONS</p><h2>A little plan, at your pace</h2></div><span id="plannerCount" class="practice-badge">0 sessions</span></div>
+        <div id="plannerList" class="planner-list" aria-live="polite"></div>
+      </section>
+
+      <section class="view" id="view-flashcards" aria-labelledby="flashcardsHeading">
+        <div class="page-heading"><div><p class="eyebrow">GENTLE ACTIVE RECALL <span class="eyebrow-flower">✿</span></p><h1 id="flashcardsHeading">Flashcard <em>garden.</em></h1><p class="page-subtitle">Bring a small idea to mind before turning the card. Revisit it later so it has time to stick.</p></div></div>
+        <section class="flashcard-toolbar panel">
+          <label class="filter-field"><span>Choose a subject</span><select id="flashcardSubject"><option value="9709">Mathematics · 9709</option><option value="9702">Physics · 9702</option><option value="9618">Computer Science · 9618</option></select></label>
+          <div class="flashcard-stats"><span><strong id="flashcardDueCount">0</strong><small>ready to revisit</small></span><span><strong id="flashcardDeckCount">0</strong><small>cards in this shelf</small></span></div>
+        </section>
+        <section id="flashcardStage" class="flashcard-stage" aria-live="polite"></section>
+        <p class="flashcard-help">“Again” brings a card back sooner. “I knew it” gives it a longer pause before its next review. Your schedule is saved locally.</p>
+      </section>
+
+      <section class="view" id="view-practice" aria-labelledby="practiceHeading">
+        <div class="page-heading"><div><p class="eyebrow">THINK IT THROUGH, ONE STEP AT A TIME <span class="eyebrow-flower">✿</span></p><h1 id="practiceHeading">CS practice <em>bench.</em></h1><p class="page-subtitle">Short, original multiple-choice checks for core 9618 ideas. Read the explanation after you answer.</p></div></div>
+        <section class="practice-intro-card panel"><span class="practice-intro-icon" aria-hidden="true">{ }</span><div><h2>Test the idea, not just your memory.</h2><p>This starter set revisits data representation, networks, logic, databases, algorithms and programming. It is supplementary practice, not a Cambridge assessment.</p></div></section>
+        <div id="csQuizCard" class="cs-quiz-card panel" aria-live="polite"></div>
+        <section class="trace-lab panel" aria-labelledby="traceHeading">
+          <div class="panel-heading"><div><p class="eyebrow">PAPER 2 · TRACE TABLE WARM-UP</p><h2 id="traceHeading">Follow the loop, one row at a time.</h2></div><span class="trace-mark" aria-hidden="true">⌁</span></div>
+          <p class="trace-intro">Complete the values after each loop iteration. Try tracing on paper first, then enter your table here.</p>
+          <pre class="trace-code"><code>Total ← 0
+FOR i ← 1 TO 4
+    IF i MOD 2 = 0 THEN
+        Total ← Total + i
+    ENDIF
+NEXT i
+OUTPUT Total</code></pre>
+          <div class="trace-table-wrap"><table class="trace-table"><thead><tr><th>Iteration</th><th>i</th><th>i MOD 2</th><th>Total after iteration</th></tr></thead><tbody>
+            <tr><th>1</th><td><input class="trace-cell" data-trace-row="0" data-trace-col="0" inputmode="numeric" aria-label="Iteration 1, value of i"></td><td><input class="trace-cell" data-trace-row="0" data-trace-col="1" inputmode="numeric" aria-label="Iteration 1, remainder"></td><td><input class="trace-cell" data-trace-row="0" data-trace-col="2" inputmode="numeric" aria-label="Iteration 1, total"></td></tr>
+            <tr><th>2</th><td><input class="trace-cell" data-trace-row="1" data-trace-col="0" inputmode="numeric" aria-label="Iteration 2, value of i"></td><td><input class="trace-cell" data-trace-row="1" data-trace-col="1" inputmode="numeric" aria-label="Iteration 2, remainder"></td><td><input class="trace-cell" data-trace-row="1" data-trace-col="2" inputmode="numeric" aria-label="Iteration 2, total"></td></tr>
+            <tr><th>3</th><td><input class="trace-cell" data-trace-row="2" data-trace-col="0" inputmode="numeric" aria-label="Iteration 3, value of i"></td><td><input class="trace-cell" data-trace-row="2" data-trace-col="1" inputmode="numeric" aria-label="Iteration 3, remainder"></td><td><input class="trace-cell" data-trace-row="2" data-trace-col="2" inputmode="numeric" aria-label="Iteration 3, total"></td></tr>
+            <tr><th>4</th><td><input class="trace-cell" data-trace-row="3" data-trace-col="0" inputmode="numeric" aria-label="Iteration 4, value of i"></td><td><input class="trace-cell" data-trace-row="3" data-trace-col="1" inputmode="numeric" aria-label="Iteration 4, remainder"></td><td><input class="trace-cell" data-trace-row="3" data-trace-col="2" inputmode="numeric" aria-label="Iteration 4, total"></td></tr>
+          </tbody></table></div>
+          <div class="trace-controls"><button type="button" class="button button-primary" id="checkTrace">Check my trace</button><button type="button" class="button button-quiet" id="resetTrace">Clear table</button></div>
+          <p id="traceFeedback" class="trace-feedback" role="status" aria-live="polite">The table will give you feedback when you check it.</p>
+        </section>
       </section>
 
       <footer class="app-footer"><span>made with a little light <span class="footer-heart">♡</span></span><span>Little Lantern · a study companion, not an official Cambridge product</span></footer>
@@ -106,6 +214,6 @@
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <dialog id="studyDialog" class="study-dialog" aria-labelledby="studyDialogTitle"><div id="studyContent"></div></dialog>
-  <dialog id="resetDialog" class="reset-dialog"><div class="dialog-flower">✿</div><h2>Start with a fresh page?</h2><p>This clears topic statuses, notes, and review dates saved on this device.</p><div class="dialog-actions"><button class="button button-quiet" id="cancelReset">Keep my progress</button><button class="button button-danger" id="confirmReset">Reset progress</button></div></dialog>
+  <dialog id="resetDialog" class="reset-dialog"><div class="dialog-flower">✿</div><h2>Start with a fresh page?</h2><p>This clears topic statuses, personal notes, review dates, planned sessions, and flashcard schedules saved on this device.</p><div class="dialog-actions"><button class="button button-quiet" id="cancelReset">Keep my progress</button><button class="button button-danger" id="confirmReset">Reset progress</button></div></dialog>
 </body>
 </html>
