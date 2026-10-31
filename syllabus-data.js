@@ -1,9 +1,4 @@
-/*
- * Little Lantern starter data.
- * Mathematics 9709 topic headings transcribed from the Cambridge International
- * AS & A Level Mathematics syllabus overview for examination in 2026 and 2027.
- * The official syllabus PDF remains the authority for full learning objectives.
- */
+
 window.LITTLE_LANTERN_SYLLABUS = {
   "9709": {
     subjectCode: "9709",
@@ -59,16 +54,16 @@ window.LITTLE_LANTERN_SYLLABUS = {
     ],
     routes: {
       AS: [
-        { id: "AS_P1_P2", label: "P1 + P2 · Pure only (AS-only)", shortLabel: "P1 + P2", subtitle: "Pure Mathematics 1 and Pure Mathematics 2", papers: ["P1", "P2"], note: "This pure-mathematics-only route is AS Level only. Cambridge states that it cannot be carried forward to complete the full A Level." },
-        { id: "AS_P1_P4", label: "P1 + P4 · Pure + Mechanics", shortLabel: "P1 + P4", subtitle: "Pure Mathematics 1 and Mechanics", papers: ["P1", "P4"], note: "AS route: Pure Mathematics 1 plus Mechanics. Choose the route your school entered you for." },
-        { id: "AS_P1_P5", label: "P1 + P5 · Pure + Statistics 1", shortLabel: "P1 + P5", subtitle: "Pure Mathematics 1 and Probability & Statistics 1", papers: ["P1", "P5"], note: "AS route: Pure Mathematics 1 plus Probability & Statistics 1. Choose the route your school entered you for." }
+        { id: "AS_P1_P2", label: "P1 + P2  Pure only (AS-only)", shortLabel: "P1 + P2", subtitle: "Pure Mathematics 1 and Pure Mathematics 2", papers: ["P1", "P2"], note: "This pure-mathematics-only route is AS Level only. Cambridge states that it cannot be carried forward to complete the full A Level." },
+        { id: "AS_P1_P4", label: "P1 + P4  Pure + Mechanics", shortLabel: "P1 + P4", subtitle: "Pure Mathematics 1 and Mechanics", papers: ["P1", "P4"], note: "AS route: Pure Mathematics 1 plus Mechanics. Choose the route your school entered you for." },
+        { id: "AS_P1_P5", label: "P1 + P5  Pure + Statistics 1", shortLabel: "P1 + P5", subtitle: "Pure Mathematics 1 and Probability & Statistics 1", papers: ["P1", "P5"], note: "AS route: Pure Mathematics 1 plus Probability & Statistics 1. Choose the route your school entered you for." }
       ],
       A2: [
-        { id: "A_P1_P3_P4_P5", label: "P1 + P3 + P4 + P5 · Mechanics + Statistics 1", shortLabel: "P1 + P3 + P4 + P5", subtitle: "Pure Mathematics 1, Pure Mathematics 3, Mechanics, and Probability & Statistics 1", papers: ["P1", "P3", "P4", "P5"], note: "Official Full A Level route: Pure Mathematics 1 and 3, Mechanics, and Probability & Statistics 1." },
-        { id: "A_P1_P3_P5_P6", label: "P1 + P3 + P5 + P6 · Statistics 1 + 2", shortLabel: "P1 + P3 + P5 + P6", subtitle: "Pure Mathematics 1, Pure Mathematics 3, and Probability & Statistics 1 and 2", papers: ["P1", "P3", "P5", "P6"], note: "Official Full A Level route: Pure Mathematics 1 and 3, Probability & Statistics 1 and 2. Paper 5 is a prerequisite for Paper 6." }
+        { id: "A_P1_P3_P4_P5", label: "P1 + P3 + P4 + P5  Mechanics + Statistics 1", shortLabel: "P1 + P3 + P4 + P5", subtitle: "Pure Mathematics 1, Pure Mathematics 3, Mechanics, and Probability & Statistics 1", papers: ["P1", "P3", "P4", "P5"], note: "Official Full A Level route: Pure Mathematics 1 and 3, Mechanics, and Probability & Statistics 1." },
+        { id: "A_P1_P3_P5_P6", label: "P1 + P3 + P5 + P6  Statistics 1 + 2", shortLabel: "P1 + P3 + P5 + P6", subtitle: "Pure Mathematics 1, Pure Mathematics 3, and Probability & Statistics 1 and 2", papers: ["P1", "P3", "P5", "P6"], note: "Official Full A Level route: Pure Mathematics 1 and 3, Probability & Statistics 1 and 2. Paper 5 is a prerequisite for Paper 6." }
       ],
       ALL: [
-        { id: "ALL_REQUESTED", label: "All six papers · Complete revision library", shortLabel: "P1–P6", subtitle: "Study library: Pure 1, Pure 2, Pure 3, Mechanics, Statistics 1 and Statistics 2", papers: ["P1", "P2", "P3", "P4", "P5", "P6"], note: "Study-library view only, not an official Cambridge exam entry combination. Use the AS or Full A Level selector to see an actual route; not every paper is taken by every candidate." }
+        { id: "ALL_REQUESTED", label: "All six papers  Complete revision library", shortLabel: "P1–P6", subtitle: "Study library: Pure 1, Pure 2, Pure 3, Mechanics, Statistics 1 and Statistics 2", papers: ["P1", "P2", "P3", "P4", "P5", "P6"], note: "Study-library view only, not an official Cambridge exam entry combination. Use the AS or Full A Level selector to see an actual route; not every paper is taken by every candidate." }
       ]
     }
   }

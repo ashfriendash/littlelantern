@@ -49,7 +49,7 @@ button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible
 .nav-item.active .nav-dot { opacity: 1; }
 .sidebar-grow { flex: 1; }
 .sidebar-note { overflow: hidden; position: relative; padding: 18px 16px 17px; border-radius: 16px; background: #e7ebdc; margin-bottom: 20px; }
-.sidebar-note:after { content: '✿'; position: absolute; right: -8px; bottom: -24px; font-size: 74px; color: #d3dec8; transform: rotate(-15deg); }
+.sidebar-note:after { content: ''; position: absolute; right: -8px; bottom: -24px; font-size: 74px; color: #d3dec8; transform: rotate(-15deg); }
 .tiny-sun { font-size: 21px; color: #a88350; margin-bottom: 8px; }
 .sidebar-note p { margin: 0 0 9px; font-family: 'Lora', Georgia, serif; font-size: 15px; line-height: 1.35; }
 .sidebar-note span { color: #87937c; font-size: 9px; letter-spacing: .8px; text-transform: uppercase; }
@@ -158,7 +158,6 @@ h1 em, .welcome-copy h2 em { font-weight: 500; color: #7b9972; }
 .source-strip { display: flex; align-items: center; gap: 13px; border: 1px solid #e9eddf; background: #eff2e8; border-radius: 15px; padding: 14px 17px; margin-bottom: 28px; }
 .source-seal { flex: 0 0 31px; width: 31px; height: 31px; border-radius: 50%; display: grid; place-items: center; color: #749169; background: #dfe9d8; font-size: 12px; }
 .source-strip > div:nth-child(2) { flex: 1; min-width: 0; }.source-strip strong { font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 13px; }.source-strip p { margin: 3px 0 0; color: #899587; font-size: 9px; line-height: 1.5; }.source-strip a { color: #6b8765; white-space: nowrap; font-size: 9px; text-decoration: none; font-weight: 700; }.source-strip a:hover, .official-link:hover { text-decoration: underline; }
-/* Syllabus library */
 .syllabus-heading { align-items: center; }
 .syllabus-stamp { padding: 10px 13px; border: 1px solid #dfe6d9; border-radius: 12px; text-align: center; color: #80947a; font-size: 7px; line-height: 1.8; letter-spacing: 1.4px; transform: rotate(3deg); background: rgba(255, 254, 251, .55); flex: 0 0 auto; }.syllabus-stamp strong { display: block; font-size: 19px; font-family: 'Lora', Georgia, serif; letter-spacing: 0; line-height: 1.25; color: #607a59; }
 .subject-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; margin-bottom: 18px; }
@@ -177,7 +176,7 @@ h1 em, .welcome-copy h2 em { font-weight: 500; color: #7b9972; }
 .topic-note-wrap { display: none; grid-column: 1 / -1; margin: 0 0 3px 46px; }.topic-note-wrap.is-open { display: grid; gap: 6px; }.topic-note-wrap label { font-size: 8px; color: #9aa692; }.topic-note { width: 100%; resize: vertical; border: 1px solid #e6ebdf; background: #fbfcf8; padding: 10px; border-radius: 9px; color: #657761; font-size: 10px; line-height: 1.5; }.hidden { display: none !important; }
 .empty-state { text-align: center; padding: 45px 20px; background: #fffefa; border-radius: 16px; border: 1px dashed #e0e6d9; }.empty-state > span { font-size: 28px; color: #9caf91; }.empty-state h3 { font-family: 'Lora', Georgia, serif; font-weight: 500; font-size: 19px; margin: 9px 0 5px; }.empty-state p { color: #9aa594; font-size: 10px; }
 .syllabus-footnote { display: flex; gap: 11px; padding: 18px 8px 5px; margin-bottom: 20px; }.footnote-flower { color: #bb9b71; font-size: 18px; }.syllabus-footnote p { color: #96a08f; font-size: 9px; line-height: 1.7; margin: 0; }.syllabus-footnote strong { color: #71836c; }
-/* Revision nook */
+
 .revision-intro { display: flex; align-items: center; gap: 18px; padding: 22px 26px; background: #e8eddf; border-radius: 20px; margin-bottom: 26px; }.revision-intro-art { flex: 0 0 55px; width: 55px; height: 55px; display: grid; place-items: center; border-radius: 17px; color: #8ca47f; background: #d7e3cc; font-size: 28px; }.revision-intro h2 { font-family: 'Lora', Georgia, serif; font-size: 20px; font-weight: 500; margin: 0 0 6px; }.revision-intro p { font-size: 10px; line-height: 1.6; color: #8b9a83; margin: 0; max-width: 590px; }.revision-controls { display: flex; align-items: end; justify-content: space-between; gap: 15px; margin-bottom: 14px; }.revision-controls .eyebrow { font-size: 8px; margin-bottom: 6px; }.revision-controls h2 { font-size: 21px; }
 .revision-list { display: grid; gap: 10px; margin-bottom: 23px; }.revision-card { display: flex; gap: 14px; align-items: center; padding: 16px; border: 1px solid #eceee4; border-radius: 15px; background: #fffefa; box-shadow: var(--shadow); }.revision-rank { align-self: flex-start; display: grid; place-items: center; width: 36px; height: 36px; border-radius: 11px; background: #f3f0e7; color: #9b9c81; font-family: 'Lora', Georgia, serif; font-size: 14px; }.revision-card-copy { flex: 1; min-width: 0; }.revision-label-row { display: flex; gap: 9px; align-items: center; margin-bottom: 6px; }.revision-label { padding: 4px 7px; border-radius: 5px; background: #f0f2e8; color: #829477; font-size: 7px; font-weight: 700; }.revision-label.learning { background: #fbf0df; color: #9c8054; }.revision-label.practising { background: #f7e9df; color: #ad7d65; }.revision-paper { color: #a2ab9c; font-size: 8px; }.revision-card h3 { font-family: 'Lora', Georgia, serif; font-size: 15px; font-weight: 500; margin: 0 0 4px; }.revision-card p { color: #99a294; font-size: 9px; line-height: 1.55; margin: 0; }.revision-card-actions { display: flex; flex-direction: column; gap: 8px; align-items: stretch; }.revision-card-actions .topic-status { max-width: none; width: 130px; }.revision-card-actions .button { padding: 8px 9px; font-size: 8px; }
 .revision-empty { padding: 38px 20px; background: #f1f5ec; border-radius: 17px; text-align: center; }.revision-empty > span { color: #8da782; font-size: 30px; }.revision-empty h3 { font-family: 'Lora', Georgia, serif; font-size: 21px; font-weight: 500; margin: 9px 0; }.revision-empty p { max-width: 460px; margin: 0 auto 15px; color: #8e9b86; font-size: 10px; line-height: 1.6; }
@@ -194,7 +193,6 @@ h1 em, .welcome-copy h2 em { font-weight: 500; color: #7b9972; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
 
 
-/* Study notes and practice: deliberately roomy, readable, and softly styled. */
 .study-toggle { border: 1px solid #dbe6d3; border-radius: 9px; background: #edf3e8; color: #54734d; padding: 8px 10px; font-size: 9px; font-weight: 800; white-space: nowrap; transition: background .2s ease, transform .2s ease; }
 .study-toggle:hover { background: #e1ecd9; transform: translateY(-1px); }
 .notes-coming { color: #a6afa0; font-size: 8px; white-space: nowrap; }
@@ -266,7 +264,6 @@ h1 em, .welcome-copy h2 em { font-weight: 500; color: #7b9972; }
   .study-toggle { grid-column: 1 / -1; width: 100%; text-align: center; }
 }
 
-/* Opening welcome screen: a soft lantern-lit entrance to the existing study nook. */
 .opening-screen { display: none; min-height: 100vh; overflow: hidden; padding: clamp(22px, 4vw, 52px) clamp(18px, 5vw, 76px) 28px; background: radial-gradient(circle at 83% 12%, rgba(229, 237, 218, .65), transparent 27%), linear-gradient(135deg, #fbfaf4 0%, #f6f6ed 52%, #f3f1e6 100%); color: var(--ink, #344635); }
 .intro-pending .opening-screen { display: block; }
 .intro-pending .app-shell { display: none; }
@@ -332,11 +329,7 @@ h1 em, .welcome-copy h2 em { font-weight: 500; color: #7b9972; }
 @media (prefers-reduced-motion: reduce) { .lantern-flame { animation: none; } }
 
 
-/* -------------------------------------------------------------------------
-   Little Lantern · Hearthlight refresh
-   A warmer parchment-and-sage palette with quieter contrast, softer edges,
-   comfortable reading widths and visible interactive states.
-   ------------------------------------------------------------------------- */
+
 :root {
   --bg: #f5f0e6;
   --paper: #fffaf1;
@@ -484,7 +477,6 @@ h1 em, .welcome-copy h2 em { color: #7b8c6a; }
 .study-source-note { color: #7c7e70; }
 .toast { background: #fffaf1; border-color: #e6ddca; color: #536b4c; box-shadow: 0 14px 36px rgba(71, 61, 43, .16); font-size: 12px; }
 
-/* New study tools */
 .planner-intro, .practice-intro-card { display: flex; align-items: flex-start; gap: 17px; padding: 22px 24px; background: linear-gradient(130deg, #e9eddf, #f2eadb); border-color: #e2e3d4; }
 .planner-sun, .practice-intro-icon { display: grid; place-items: center; flex: 0 0 48px; width: 48px; height: 48px; border-radius: 16px; background: #f7f0df; color: #b38c59; font: 25px 'Lora', Georgia, serif; }
 .planner-intro h2, .practice-intro-card h2 { margin: 0 0 5px; color: #435342; font: 500 20px 'Lora', Georgia, serif; }
@@ -555,7 +547,6 @@ h1 em, .welcome-copy h2 em { color: #7b8c6a; }
 .quiz-controls p { margin: 0; color: #898a7a; font-size: 10px; }
 .quiz-empty { padding: 35px; text-align: center; color: #747967; }
 
-/* Softer motion, readable touch targets and sensible small-screen layouts. */
 @media (hover: hover) {
   .panel, .stat-card, .paper-card, .revision-card { transition: box-shadow .2s ease, transform .2s ease; }
   .stat-card:hover, .paper-card:hover { box-shadow: 0 16px 38px rgba(74, 63, 43, .075); }
@@ -623,7 +614,6 @@ h1 em, .welcome-copy h2 em { color: #7b8c6a; }
 .trace-feedback.is-correct { background: #edf2e7; color: #556d4c; }
 .trace-feedback.is-wrong { background: #f7eee6; color: #8c6d5d; }
 
-/* Final comfort pass: warmer welcome, a little more breathing room, legible details. */
 .opening-screen {
   background:
     radial-gradient(circle at 78% 23%, rgba(244, 222, 181, .40), transparent 25rem),

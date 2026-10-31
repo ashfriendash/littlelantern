@@ -3,12 +3,12 @@ window.LITTLE_LANTERN_NOTES = {
   "subjectCode": "9709",
   "syllabusYear": "2026–2027",
   "modules": {
-    "P1": "Pure Mathematics 1 · Paper 1",
-    "P2": "Pure Mathematics 2 · Paper 2",
-    "P3": "Pure Mathematics 3 · Paper 3",
-    "M1": "Mechanics · Paper 4",
-    "S1": "Probability & Statistics 1 · Paper 5",
-    "S2": "Probability & Statistics 2 · Paper 6"
+    "P1": "Pure Mathematics 1  Paper 1",
+    "P2": "Pure Mathematics 2  Paper 2",
+    "P3": "Pure Mathematics 3  Paper 3",
+    "M1": "Mechanics  Paper 4",
+    "S1": "Probability & Statistics 1  Paper 5",
+    "S2": "Probability & Statistics 2  Paper 6"
   },
   "source": {
     "p1UserResource": "As-Math-P1-Notes-by-Rafique-Akhtar1-compressed.pdf (user-provided; used as a topic-reference, not reproduced verbatim)",

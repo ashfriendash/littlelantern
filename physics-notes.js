@@ -1,4 +1,4 @@
-/* Original revision notes mapped to Cambridge International Physics 9702 (2025–2027). */
+
 (() => {
   const rows = [
     {

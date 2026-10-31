@@ -68,8 +68,7 @@
         reviewed: saved.reviewed && typeof saved.reviewed === "object" ? saved.reviewed : {},
         plan: Array.isArray(saved.plan) ? saved.plan : [],
         flashcardReviews: saved.flashcardReviews && typeof saved.flashcardReviews === "object" ? saved.flashcardReviews : {},
-        // Preserve a v2 view selection; for the earlier starter, keep study data but open the new all-module library.
-        prefs: migratedLegacy ? { ...defaultState.prefs } : { ...defaultState.prefs, ...(saved.prefs || {}) }
+         prefs: migratedLegacy ? { ...defaultState.prefs } : { ...defaultState.prefs, ...(saved.prefs || {}) }
       };
     } catch (error) {
       return JSON.parse(JSON.stringify(defaultState));
@@ -207,7 +206,7 @@
   function dismissOpeningScreen() {
     document.body.classList.remove("intro-pending");
     document.body.classList.add("intro-dismissed");
-    try { sessionStorage.setItem(INTRO_KEY, "yes"); } catch (error) { /* The welcome screen still works if session storage is unavailable. */ }
+    try { sessionStorage.setItem(INTRO_KEY, "yes"); } catch (error) { }
   }
 
   function qualificationLabel() {
@@ -238,13 +237,13 @@
       .slice(0, 3);
     const container = $("#todaySteps");
     if (!steps.length) {
-      container.innerHTML = `<div class="all-done"><span>✿</span><strong>Your route is feeling lovely.</strong><p>Every visible topic is marked confident. Pick one to keep fresh or change your paper route.</p><button class="text-button" data-go="syllabus">Explore syllabus →</button></div>`;
+      container.innerHTML = `<div class="all-done"><span></span><strong>Your route is feeling lovely.</strong><p>Every visible topic is marked confident. Pick one to keep fresh or change your paper route.</p><button class="text-button" data-go="syllabus">Explore syllabus →</button></div>`;
     } else {
       container.innerHTML = steps.map((topic, index) => {
         const status = getStatus(topic.id);
         const label = status === "Not started" ? "A good place to begin" : STATUS_HELP[status];
-        const icon = ["✿", "☘", "✧"][index];
-        return `<article class="step-item"><span class="step-icon step-icon-${index}">${icon}</span><div class="step-copy"><span class="step-meta">${escapeHTML(displayModuleCode(topic))} · ${escapeHTML(label)}</span><strong>${escapeHTML(topic.number)} ${escapeHTML(topic.title)}</strong><small>${escapeHTML(topic.paperTitle)}</small></div><button class="round-arrow open-topic" data-topic-id="${topic.id}" aria-label="Open ${escapeHTML(topic.title)}">↗</button></article>`;
+        const icon = ["", "☘", ""][index];
+        return `<article class="step-item"><span class="step-icon step-icon-${index}">${icon}</span><div class="step-copy"><span class="step-meta">${escapeHTML(displayModuleCode(topic))} · ${escapeHTML(label)}</span><strong>${escapeHTML(topic.number)} ${escapeHTML(topic.title)}</strong><small>${escapeHTML(topic.paperTitle)}</small></div><button class="round-arrow open-topic" data-topic-id="${topic.id}" aria-label="Open ${escapeHTML(topic.title)}">GO</button></article>`;
       }).join("");
     }
     if ($("#todaySubtitle")) $("#todaySubtitle").textContent = `Your ${subject.subjectName} study space: track what you know, revisit tricky ideas, and choose a gentle next step.`;
@@ -305,10 +304,10 @@
     const note = state.notes[topic.id] || "";
     const reviewed = state.reviewed[topic.id];
     const noteLabel = note.trim() ? "Edit note" : "Add a note";
-    const reviewLabel = reviewed === localDateISO() ? "Reviewed today ✓" : "Mark reviewed";
+    const reviewLabel = reviewed === localDateISO() ? "Reviewed today Good" : "Mark reviewed";
     return `<article class="topic-row" id="topic-${topic.id}">
       <div class="topic-main"><span class="topic-code">${escapeHTML(topic.number)}</span><div class="topic-text"><strong>${escapeHTML(topic.title)}</strong><small>${escapeHTML(displayModuleCode(topic))} · ${escapeHTML(topic.paperTitle)}</small></div></div>
-      <div class="topic-actions"><label class="sr-only" for="status-${topic.id}">Status for ${escapeHTML(topic.title)}</label><select class="topic-status status-${status.toLowerCase().replace(/\s+/g, "-")}" id="status-${topic.id}" data-topic-id="${topic.id}" aria-label="Status for ${escapeHTML(topic.title)}">${STATUSES.map(option => `<option value="${option}" ${status === option ? "selected" : ""}>${option}</option>`).join("")}</select>${topic.hasStudyNotes ? `<button class="study-toggle" data-action="study" data-topic-id="${topic.id}">Open notes ↗</button>` : `<span class="notes-coming">Notes coming later</span>`}<button class="note-toggle" data-action="note" data-topic-id="${topic.id}">${noteLabel}</button><button class="review-toggle ${reviewed === localDateISO() ? "reviewed" : ""}" data-action="reviewed" data-topic-id="${topic.id}" title="Mark this topic as revised">${reviewLabel}</button></div>
+      <div class="topic-actions"><label class="sr-only" for="status-${topic.id}">Status for ${escapeHTML(topic.title)}</label><select class="topic-status status-${status.toLowerCase().replace(/\s+/g, "-")}" id="status-${topic.id}" data-topic-id="${topic.id}" aria-label="Status for ${escapeHTML(topic.title)}">${STATUSES.map(option => `<option value="${option}" ${status === option ? "selected" : ""}>${option}</option>`).join("")}</select>${topic.hasStudyNotes ? `<button class="study-toggle" data-action="study" data-topic-id="${topic.id}">Open notes GO</button>` : `<span class="notes-coming">Notes coming later</span>`}<button class="note-toggle" data-action="note" data-topic-id="${topic.id}">${noteLabel}</button><button class="review-toggle ${reviewed === localDateISO() ? "reviewed" : ""}" data-action="reviewed" data-topic-id="${topic.id}" title="Mark this topic as revised">${reviewLabel}</button></div>
       <div class="topic-note-wrap ${note.trim() ? "is-open" : ""}" data-note-wrap="${topic.id}"><label for="note-${topic.id}">A note to your future self</label><textarea id="note-${topic.id}" class="topic-note" data-note-id="${topic.id}" rows="2" placeholder="A formula to remember, a question to revisit, or a tiny win…">${escapeHTML(note)}</textarea></div>
     </article>`;
   }
@@ -340,7 +339,7 @@
       <section class="study-section practice-section"><div class="practice-heading"><div><p class="eyebrow">TRY THESE YOURSELF FIRST</p><h3>Practice corner</h3></div><span class="practice-badge">${(pack.questions || []).length} questions</span></div><p class="practice-intro">These are original structured-question-style exercises, arranged from warm-up to challenge. They are not copied from Cambridge past papers.</p>
         ${(pack.questions || []).map((question, index) => `<article class="practice-card"><div class="practice-card-top"><span class="practice-level level-${index + 1}">${escapeHTML(question.level)}</span><span class="practice-number">Q${index + 1}</span></div><p class="practice-question">${escapeHTML(question.question)}</p><details class="solution-details"><summary>Reveal worked solution</summary><div class="solution-content"><p class="solution-answer"><strong>Answer:</strong> ${escapeHTML(question.answer)}</p>${list(question.steps)}</div></details></article>`).join("")}
       </section>
-      <div class="study-dialog-footer"><span>✿ Small steps still count.</span><div><button class="button button-light-bordered" data-action="study-reviewed" data-topic-id="${topic.id}">Mark reviewed</button><button class="button button-primary" data-action="close-study">Back to syllabus</button></div></div>
+      <div class="study-dialog-footer"><span> Small steps still count.</span><div><button class="button button-light-bordered" data-action="study-reviewed" data-topic-id="${topic.id}">Mark reviewed</button><button class="button button-primary" data-action="close-study">Back to syllabus</button></div></div>
       <p class="study-source-note">${escapeHTML((NOTES_PACKAGE.subjectSources && NOTES_PACKAGE.subjectSources[topic.subjectCode]) || `These are independently written revision summaries mapped to Cambridge International ${topic.subjectName} ${topic.subjectCode}. Use the official syllabus for the definitive learning objectives and practical requirements.`)}</p>`;
     const dialog = $("#studyDialog");
     if (!dialog.open) dialog.showModal();
@@ -366,12 +365,11 @@
       let detail = status === "Not started" ? "An easy first step: read the topic overview and try one worked example." : status === "Learning" ? "Revisit the core idea, then work through a couple of guided examples." : status === "Practising" ? "Try a short set of exam-style questions and check your method." : "A little spaced practice can help this topic stay familiar.";
       if (topic.reviewed) detail += ` Last reviewed ${escapeHTML(new Intl.DateTimeFormat("en", { month: "short", day: "numeric" }).format(new Date(`${topic.reviewed}T12:00:00`)))}.`;
       const urgency = status === "Not started" ? "Begin here" : status === "Learning" ? "Revisit gently" : status === "Practising" ? "Build fluency" : "Keep it fresh";
-      return `<article class="revision-card"><div class="revision-rank">${String(index + 1).padStart(2, "0")}</div><div class="revision-card-copy"><div class="revision-label-row"><span class="revision-label ${status.toLowerCase().replace(/\s+/g, "-")}">${escapeHTML(urgency)}</span><span class="revision-paper">${escapeHTML(displayModuleCode(topic))} · ${escapeHTML(topic.number)}</span></div><h3>${escapeHTML(topic.title)}</h3><p>${detail}</p></div><div class="revision-card-actions"><select class="topic-status status-${status.toLowerCase().replace(/\s+/g, "-")}" data-topic-id="${topic.id}" aria-label="Status for ${escapeHTML(topic.title)}">${STATUSES.map(option => `<option value="${option}" ${status === option ? "selected" : ""}>${option}</option>`).join("")}</select><button class="button button-light-bordered open-topic" data-topic-id="${topic.id}">Open topic ↗</button></div></article>`;
+      return `<article class="revision-card"><div class="revision-rank">${String(index + 1).padStart(2, "0")}</div><div class="revision-card-copy"><div class="revision-label-row"><span class="revision-label ${status.toLowerCase().replace(/\s+/g, "-")}">${escapeHTML(urgency)}</span><span class="revision-paper">${escapeHTML(displayModuleCode(topic))} · ${escapeHTML(topic.number)}</span></div><h3>${escapeHTML(topic.title)}</h3><p>${detail}</p></div><div class="revision-card-actions"><select class="topic-status status-${status.toLowerCase().replace(/\s+/g, "-")}" data-topic-id="${topic.id}" aria-label="Status for ${escapeHTML(topic.title)}">${STATUSES.map(option => `<option value="${option}" ${status === option ? "selected" : ""}>${option}</option>`).join("")}</select><button class="button button-light-bordered open-topic" data-topic-id="${topic.id}">Open topic GO</button></div></article>`;
     }).join("");
   }
 
 
-  // --- Study planner -------------------------------------------------------
   function populatePlannerTopics() {
     const subjectCode = $("#plannerSubject").value || state.prefs.subject;
     const topics = ALL_TOPICS.filter(topic => topic.subjectCode === subjectCode);
@@ -415,7 +413,7 @@
     state.plan.push({ id: `plan-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`, topicId, date, duration, done: false });
     saveState();
     renderPlanner();
-    showToast("A little session has been added to your plan. ✿");
+    showToast("A little session has been added to your plan. ");
   }
 
   function updatePlannerSession(action, sessionId, topicId) {
@@ -428,7 +426,7 @@
     renderPlanner();
   }
 
-  // --- Flashcards: cards are made from the revision packs already included. -
+
   function getFlashcards(subjectCode) {
     const cards = [];
     for (const topic of ALL_TOPICS.filter(item => item.subjectCode === subjectCode)) {
@@ -501,20 +499,20 @@
     renderFlashcards();
   }
 
-  // --- Short original CS concept checks ------------------------------------
+  
   const CS_QUIZ = [
-    { topic: "Data representation · 1.1", question: "Which 8-bit two's-complement pattern represents −5?", options: ["00000101", "11111011", "11111010", "10000101"], answer: 1, explanation: "Write +5 as 00000101, invert the bits to 11111010, then add 1. The result is 11111011." },
-    { topic: "Networks · 2.1", question: "Which service translates a domain name such as example.com into an IP address?", options: ["DNS", "DHCP", "FTP", "SMTP"], answer: 0, explanation: "DNS resolves domain names to IP addresses so clients can locate services on a network." },
-    { topic: "Logic circuits · 3.2", question: "An AND gate has inputs A = 1 and B = 0. What is its output?", options: ["0", "1", "Undefined", "It depends on the clock"], answer: 0, explanation: "An AND gate outputs 1 only when every input is 1. Since B is 0, the output is 0." },
-    { topic: "CPU architecture · 4.1", question: "Which register holds the address of the next instruction to be fetched?", options: ["Accumulator", "Program Counter", "Memory Data Register", "Status Register"], answer: 1, explanation: "The Program Counter (PC) stores the address of the next instruction. It is updated as instructions are fetched or control flow changes." },
-    { topic: "Data integrity · 6.2", question: "A validation check confirms that entered data follows a required format. Does it prove that the data is correct?", options: ["Yes, always", "No; valid format does not guarantee truth", "Only if the field is numeric", "Only in a DBMS"], answer: 1, explanation: "Validation checks whether data meets rules, such as a permitted range or format. It cannot by itself prove that the value is accurate." },
-    { topic: "Databases · 8.1", question: "What is the main purpose of normalisation?", options: ["Increase repeated data", "Reduce unnecessary duplication and update anomalies", "Encrypt every field", "Sort records alphabetically"], answer: 1, explanation: "Normalisation structures relations to reduce redundancy and avoid insertion, update and deletion anomalies." },
-    { topic: "SQL · 8.3", question: "Which SQL clause filters rows before they are returned?", options: ["ORDER BY", "WHERE", "GROUP BY", "CREATE"], answer: 1, explanation: "WHERE applies a condition to rows. ORDER BY sorts the resulting rows; GROUP BY groups rows for aggregate operations." },
-    { topic: "Algorithms · 9.2", question: "A binary search can be applied correctly only when the data is…", options: ["Stored in a stack", "Already sorted", "All strings", "Exactly 100 items long"], answer: 1, explanation: "Binary search repeatedly halves the remaining search interval. Its direction decision depends on the data being ordered." },
-    { topic: "Data structures · 10.4", question: "Which principle describes a stack?", options: ["FIFO", "LIFO", "Random access only", "First-in, middle-out"], answer: 1, explanation: "A stack uses last-in, first-out (LIFO): the most recently pushed item is the first one popped." },
-    { topic: "Programming · 11.2", question: "What is the purpose of a loop condition?", options: ["To decide whether the loop continues", "To declare a constant", "To store a file", "To define a class"], answer: 0, explanation: "A loop condition controls repetition. The loop continues while its condition is true, or until its terminating condition is met, depending on the construct." },
-    { topic: "Recursion · 19.2", question: "Why does a recursive algorithm need a base case?", options: ["To sort the input", "To stop recursive calls", "To create a global variable", "To make the function iterative"], answer: 1, explanation: "The base case gives a condition where no further recursive call is made. Without a reachable base case, calls may continue until a runtime limit is reached." },
-    { topic: "File handling · 20.2", question: "Why should a program check for an end-of-file condition while reading a file?", options: ["To detect when no more data remains", "To encrypt the file", "To rename the file", "To convert text into SQL"], answer: 0, explanation: "An end-of-file condition indicates that there is no further data to read, helping the program stop safely rather than attempting an invalid read." }
+    { topic: "Data representation  1.1", question: "Which 8-bit two's-complement pattern represents −5?", options: ["00000101", "11111011", "11111010", "10000101"], answer: 1, explanation: "Write +5 as 00000101, invert the bits to 11111010, then add 1. The result is 11111011." },
+    { topic: "Networks  2.1", question: "Which service translates a domain name such as example.com into an IP address?", options: ["DNS", "DHCP", "FTP", "SMTP"], answer: 0, explanation: "DNS resolves domain names to IP addresses so clients can locate services on a network." },
+    { topic: "Logic circuits  3.2", question: "An AND gate has inputs A = 1 and B = 0. What is its output?", options: ["0", "1", "Undefined", "It depends on the clock"], answer: 0, explanation: "An AND gate outputs 1 only when every input is 1. Since B is 0, the output is 0." },
+    { topic: "CPU architecture  4.1", question: "Which register holds the address of the next instruction to be fetched?", options: ["Accumulator", "Program Counter", "Memory Data Register", "Status Register"], answer: 1, explanation: "The Program Counter (PC) stores the address of the next instruction. It is updated as instructions are fetched or control flow changes." },
+    { topic: "Data integrity  6.2", question: "A validation check confirms that entered data follows a required format. Does it prove that the data is correct?", options: ["Yes, always", "No; valid format does not guarantee truth", "Only if the field is numeric", "Only in a DBMS"], answer: 1, explanation: "Validation checks whether data meets rules, such as a permitted range or format. It cannot by itself prove that the value is accurate." },
+    { topic: "Databases  8.1", question: "What is the main purpose of normalisation?", options: ["Increase repeated data", "Reduce unnecessary duplication and update anomalies", "Encrypt every field", "Sort records alphabetically"], answer: 1, explanation: "Normalisation structures relations to reduce redundancy and avoid insertion, update and deletion anomalies." },
+    { topic: "SQL  8.3", question: "Which SQL clause filters rows before they are returned?", options: ["ORDER BY", "WHERE", "GROUP BY", "CREATE"], answer: 1, explanation: "WHERE applies a condition to rows. ORDER BY sorts the resulting rows; GROUP BY groups rows for aggregate operations." },
+    { topic: "Algorithms  9.2", question: "A binary search can be applied correctly only when the data is…", options: ["Stored in a stack", "Already sorted", "All strings", "Exactly 100 items long"], answer: 1, explanation: "Binary search repeatedly halves the remaining search interval. Its direction decision depends on the data being ordered." },
+    { topic: "Data structures  10.4", question: "Which principle describes a stack?", options: ["FIFO", "LIFO", "Random access only", "First-in, middle-out"], answer: 1, explanation: "A stack uses last-in, first-out (LIFO): the most recently pushed item is the first one popped." },
+    { topic: "Programming  11.2", question: "What is the purpose of a loop condition?", options: ["To decide whether the loop continues", "To declare a constant", "To store a file", "To define a class"], answer: 0, explanation: "A loop condition controls repetition. The loop continues while its condition is true, or until its terminating condition is met, depending on the construct." },
+    { topic: "Recursion  19.2", question: "Why does a recursive algorithm need a base case?", options: ["To sort the input", "To stop recursive calls", "To create a global variable", "To make the function iterative"], answer: 1, explanation: "The base case gives a condition where no further recursive call is made. Without a reachable base case, calls may continue until a runtime limit is reached." },
+    { topic: "File handling  20.2", question: "Why should a program check for an end-of-file condition while reading a file?", options: ["To detect when no more data remains", "To encrypt the file", "To rename the file", "To convert text into SQL"], answer: 0, explanation: "An end-of-file condition indicates that there is no further data to read, helping the program stop safely rather than attempting an invalid read." }
   ];
 
   function renderCSQuiz() {
@@ -582,7 +580,7 @@
     $("#traceFeedback").classList.remove("is-correct", "is-wrong");
   }
 
-  // Validate imported JSON before it replaces anything in the local study space.
+  
   async function importProgressFile(file) {
     if (!file) return;
     if (file.size > 2_000_000) { showToast("That backup is larger than expected. Choose a Little Lantern JSON backup."); return; }
@@ -612,7 +610,7 @@
         renderSubjectTabs(); renderDashboard(); renderSyllabus(); renderRevision(); renderPlanner(); renderFlashcards();
         throw new Error("Could not save the imported backup");
       }
-      showToast("Your Little Lantern backup has been restored. ✿");
+      showToast("Your Little Lantern backup has been restored. ");
     } catch (error) {
       if (previousState) {
         state = previousState;
@@ -676,7 +674,7 @@
         timerRunning = false;
         $("#timerStart").textContent = "Begin again";
         $("#timerMessage").textContent = "lovely work — time to rest";
-        showToast("Focus session complete. Take a little break. ✿");
+        showToast("Focus session complete. Take a little break. ");
       }
     }, 1000);
   }
@@ -717,7 +715,7 @@
     link.click();
     link.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
-    showToast("Your progress backup is ready. Keep it somewhere safe. ✿");
+    showToast("Your progress backup is ready. Keep it somewhere safe. ");
   }
 
   function resetProgress() {
@@ -799,7 +797,7 @@
         saveState();
         renderDashboard();
         renderRevision();
-        showToast("Review date saved. Nice work. ✿");
+        showToast("Review date saved. Nice work. ");
         return;
       }
       if (action.dataset.action === "note") {
@@ -814,7 +812,7 @@
         saveState();
         renderSyllabus();
         renderRevision();
-        showToast("Review date saved. Nice work. ✿");
+        showToast("Review date saved. Nice work. ");
       }
     });
     $("#syllabusGroups").addEventListener("input", event => {
@@ -852,9 +850,8 @@
     renderDate();
     bindEvents();
     try {
-      // Remember dismissal only for this tab session. A fresh launch shows the opening screen again.
       if (sessionStorage.getItem(INTRO_KEY) === "yes") dismissOpeningScreen();
-    } catch (error) { /* Keep the welcome screen available when storage is blocked. */ }
+    } catch (error) {}
     $("#qualificationSelect").value = state.prefs.qualification;
     routeOptions();
     renderSubjectTabs();
