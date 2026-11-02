@@ -243,12 +243,11 @@
         const status = getStatus(topic.id);
         const label = status === "Not started" ? "A good place to begin" : STATUS_HELP[status];
         const icon = ["", "☘", ""][index];
-        return `<article class="step-item"><span class="step-icon step-icon-${index}">${icon}</span><div class="step-copy"><span class="step-meta">${escapeHTML(displayModuleCode(topic))} · ${escapeHTML(label)}</span><strong>${escapeHTML(topic.number)} ${escapeHTML(topic.title)}</strong><small>${escapeHTML(topic.paperTitle)}</small></div><button class="round-arrow open-topic" data-topic-id="${topic.id}" aria-label="Open ${escapeHTML(topic.title)}">GO</button></article>`;
+        return `<article class="step-item"><span class="step-icon step-icon-${index}">${icon}</span><div class="step-copy"><span class="step-meta">${escapeHTML(displayModuleCode(topic))}  ${escapeHTML(label)}</span><strong>${escapeHTML(topic.number)} ${escapeHTML(topic.title)}</strong><small>${escapeHTML(topic.paperTitle)}</small></div><button class="round-arrow open-topic" data-topic-id="${topic.id}" aria-label="Open ${escapeHTML(topic.title)}">GO</button></article>`;
       }).join("");
     }
     if ($("#todaySubtitle")) $("#todaySubtitle").textContent = `Your ${subject.subjectName} study space: track what you know, revisit tricky ideas, and choose a gentle next step.`;
-    if ($("#sourceStripTitle")) $("#sourceStripTitle").textContent = `${subject.subjectName} · Cambridge ${subject.subjectCode}`;
-    if ($("#sourceStripText")) $("#sourceStripText").textContent = subject.mappingNote || `Original revision explanations mapped to the ${subject.syllabusYear} syllabus. Check the official specification for your exam year.`;
+    if ($("#sourceStripTitle")) $("#sourceStripTitle").textContent = `${subject.subjectName}  Cambridge ${subject.subjectCode}`;;
     if ($("#sourceStripLink")) $("#sourceStripLink").href = subject.sourceUrl;
     renderRouteHint();
   }
@@ -258,12 +257,12 @@
     const subject = getSubject();
     const note = route.note;
     if ($("#routeHint")) $("#routeHint").innerHTML = `<span>☼</span><span>${escapeHTML(note)}</span>`;
-    if ($("#routeTitle")) $("#routeTitle").textContent = `${subject.subjectName} · ${route.shortLabel}`;
+    if ($("#routeTitle")) $("#routeTitle").textContent = `${subject.subjectName}  ${route.shortLabel}`;
     if ($("#routeSubtitle")) $("#routeSubtitle").textContent = route.subtitle;
     if ($("#syllabusStamp")) $("#syllabusStamp").innerHTML = `CAMBRIDGE<br><strong>${escapeHTML(subject.subjectCode)}</strong><br>${escapeHTML(subject.syllabusYear)}`;
     if ($("#officialSyllabusLink")) $("#officialSyllabusLink").href = subject.sourceUrl;
     if ($("#syllabusSubtitle")) $("#syllabusSubtitle").textContent = `Explore ${subject.subjectName.toLowerCase()} concepts, open revision notes, practise, and track your progress.`;
-    if ($("#syllabusAccuracyText")) $("#syllabusAccuracyText").textContent = `${subject.mappingNote || `Mapped to the ${subject.syllabusYear} syllabus.`} These independent notes are revision aids; the official Cambridge specification remains the final authority.`;
+    if ($("#syllabusAccuracyText")) $("#syllabusAccuracyText").textContent = `${subject.mappingNote || `Mapped to the ${subject.syllabusYear} syllabus.`} `;
     renderSubjectTabs();
   }
 
@@ -291,7 +290,7 @@
     $("#syllabusGroups").innerHTML = visiblePapers.map(paper => {
       const paperTopics = paper.topics;
       const paperExplored = paperTopics.filter(topic => getStatus(topic.id) !== "Not started").length;
-      const overline = paper.label ? `CAMBRIDGE ${subject.subjectCode} · ${paper.label}` : `CAMBRIDGE ${subject.subjectCode} · ${paper.alias || paper.code} · PAPER ${paper.number}`;
+      const overline = paper.label ? `CAMBRIDGE ${subject.subjectCode}  ${paper.label}` : `CAMBRIDGE ${subject.subjectCode}  ${paper.alias || paper.code}  PAPER ${paper.number}`;
       return `<section class="paper-card">
         <div class="paper-card-head"><div class="paper-number">${escapeHTML(paper.code)}</div><div class="paper-title-wrap"><span class="paper-overline">${escapeHTML(overline)}</span><h3>${escapeHTML(paper.title)}</h3><small>${paperExplored} of ${paperTopics.length} shown topics explored</small></div><div class="paper-mini-progress"><span style="width:${paperTopics.length ? Math.round((paperExplored / paperTopics.length) * 100) : 0}%"></span></div></div>
         <div class="topics-list">${paperTopics.map(topic => renderTopic(topic)).join("")}</div>
@@ -306,7 +305,7 @@
     const noteLabel = note.trim() ? "Edit note" : "Add a note";
     const reviewLabel = reviewed === localDateISO() ? "Reviewed today Good" : "Mark reviewed";
     return `<article class="topic-row" id="topic-${topic.id}">
-      <div class="topic-main"><span class="topic-code">${escapeHTML(topic.number)}</span><div class="topic-text"><strong>${escapeHTML(topic.title)}</strong><small>${escapeHTML(displayModuleCode(topic))} · ${escapeHTML(topic.paperTitle)}</small></div></div>
+      <div class="topic-main"><span class="topic-code">${escapeHTML(topic.number)}</span><div class="topic-text"><strong>${escapeHTML(topic.title)}</strong><small>${escapeHTML(displayModuleCode(topic))}  ${escapeHTML(topic.paperTitle)}</small></div></div>
       <div class="topic-actions"><label class="sr-only" for="status-${topic.id}">Status for ${escapeHTML(topic.title)}</label><select class="topic-status status-${status.toLowerCase().replace(/\s+/g, "-")}" id="status-${topic.id}" data-topic-id="${topic.id}" aria-label="Status for ${escapeHTML(topic.title)}">${STATUSES.map(option => `<option value="${option}" ${status === option ? "selected" : ""}>${option}</option>`).join("")}</select>${topic.hasStudyNotes ? `<button class="study-toggle" data-action="study" data-topic-id="${topic.id}">Open notes GO</button>` : `<span class="notes-coming">Notes coming later</span>`}<button class="note-toggle" data-action="note" data-topic-id="${topic.id}">${noteLabel}</button><button class="review-toggle ${reviewed === localDateISO() ? "reviewed" : ""}" data-action="reviewed" data-topic-id="${topic.id}" title="Mark this topic as revised">${reviewLabel}</button></div>
       <div class="topic-note-wrap ${note.trim() ? "is-open" : ""}" data-note-wrap="${topic.id}"><label for="note-${topic.id}">A note to your future self</label><textarea id="note-${topic.id}" class="topic-note" data-note-id="${topic.id}" rows="2" placeholder="A formula to remember, a question to revisit, or a tiny win…">${escapeHTML(note)}</textarea></div>
     </article>`;
@@ -324,7 +323,7 @@
     const list = items => `<ul>${(items || []).map(item => `<li>${escapeHTML(item)}</li>`).join("")}</ul>`;
     content.innerHTML = `
       <div class="study-dialog-top">
-        <div><p class="eyebrow">${escapeHTML(moduleCode)} · ${escapeHTML(topic.number)} · REVISION NOTES</p><h2 id="studyDialogTitle">${escapeHTML(topic.title)}</h2><p class="study-subtitle">${escapeHTML(topic.paperTitle)} · Cambridge ${escapeHTML(topic.subjectCode)} · ${escapeHTML(topic.syllabusYear)}</p></div>
+        <div><p class="eyebrow">${escapeHTML(moduleCode)}  ${escapeHTML(topic.number)}  REVISION NOTES</p><h2 id="studyDialogTitle">${escapeHTML(topic.title)}</h2><p class="study-subtitle">${escapeHTML(topic.paperTitle)}  Cambridge ${escapeHTML(topic.subjectCode)}  ${escapeHTML(topic.syllabusYear)}</p></div>
         <button type="button" class="study-close" data-action="close-study" aria-label="Close notes">×</button>
       </div>
       ${pack.prerequisite ? `<div class="study-prerequisite"><strong>Prerequisite note</strong><p>${escapeHTML(pack.prerequisite)}</p></div>` : ""}
@@ -340,7 +339,7 @@
         ${(pack.questions || []).map((question, index) => `<article class="practice-card"><div class="practice-card-top"><span class="practice-level level-${index + 1}">${escapeHTML(question.level)}</span><span class="practice-number">Q${index + 1}</span></div><p class="practice-question">${escapeHTML(question.question)}</p><details class="solution-details"><summary>Reveal worked solution</summary><div class="solution-content"><p class="solution-answer"><strong>Answer:</strong> ${escapeHTML(question.answer)}</p>${list(question.steps)}</div></details></article>`).join("")}
       </section>
       <div class="study-dialog-footer"><span> Small steps still count.</span><div><button class="button button-light-bordered" data-action="study-reviewed" data-topic-id="${topic.id}">Mark reviewed</button><button class="button button-primary" data-action="close-study">Back to syllabus</button></div></div>
-      <p class="study-source-note">${escapeHTML((NOTES_PACKAGE.subjectSources && NOTES_PACKAGE.subjectSources[topic.subjectCode]) || `These are independently written revision summaries mapped to Cambridge International ${topic.subjectName} ${topic.subjectCode}. Use the official syllabus for the definitive learning objectives and practical requirements.`)}</p>`;
+      <p class="study-source-note">${escapeHTML((NOTES_PACKAGE.subjectSources && NOTES_PACKAGE.subjectSources[topic.subjectCode]) || `Cambridge International ${topic.subjectName} ${topic.subjectCode} can also use official syllabus`)}</p>`;
     const dialog = $("#studyDialog");
     if (!dialog.open) dialog.showModal();
   }
@@ -365,7 +364,7 @@
       let detail = status === "Not started" ? "An easy first step: read the topic overview and try one worked example." : status === "Learning" ? "Revisit the core idea, then work through a couple of guided examples." : status === "Practising" ? "Try a short set of exam-style questions and check your method." : "A little spaced practice can help this topic stay familiar.";
       if (topic.reviewed) detail += ` Last reviewed ${escapeHTML(new Intl.DateTimeFormat("en", { month: "short", day: "numeric" }).format(new Date(`${topic.reviewed}T12:00:00`)))}.`;
       const urgency = status === "Not started" ? "Begin here" : status === "Learning" ? "Revisit gently" : status === "Practising" ? "Build fluency" : "Keep it fresh";
-      return `<article class="revision-card"><div class="revision-rank">${String(index + 1).padStart(2, "0")}</div><div class="revision-card-copy"><div class="revision-label-row"><span class="revision-label ${status.toLowerCase().replace(/\s+/g, "-")}">${escapeHTML(urgency)}</span><span class="revision-paper">${escapeHTML(displayModuleCode(topic))} · ${escapeHTML(topic.number)}</span></div><h3>${escapeHTML(topic.title)}</h3><p>${detail}</p></div><div class="revision-card-actions"><select class="topic-status status-${status.toLowerCase().replace(/\s+/g, "-")}" data-topic-id="${topic.id}" aria-label="Status for ${escapeHTML(topic.title)}">${STATUSES.map(option => `<option value="${option}" ${status === option ? "selected" : ""}>${option}</option>`).join("")}</select><button class="button button-light-bordered open-topic" data-topic-id="${topic.id}">Open topic GO</button></div></article>`;
+      return `<article class="revision-card"><div class="revision-rank">${String(index + 1).padStart(2, "0")}</div><div class="revision-card-copy"><div class="revision-label-row"><span class="revision-label ${status.toLowerCase().replace(/\s+/g, "-")}">${escapeHTML(urgency)}</span><span class="revision-paper">${escapeHTML(displayModuleCode(topic))}  ${escapeHTML(topic.number)}</span></div><h3>${escapeHTML(topic.title)}</h3><p>${detail}</p></div><div class="revision-card-actions"><select class="topic-status status-${status.toLowerCase().replace(/\s+/g, "-")}" data-topic-id="${topic.id}" aria-label="Status for ${escapeHTML(topic.title)}">${STATUSES.map(option => `<option value="${option}" ${status === option ? "selected" : ""}>${option}</option>`).join("")}</select><button class="button button-light-bordered open-topic" data-topic-id="${topic.id}">Open topic GO</button></div></article>`;
     }).join("");
   }
 
@@ -373,7 +372,7 @@
   function populatePlannerTopics() {
     const subjectCode = $("#plannerSubject").value || state.prefs.subject;
     const topics = ALL_TOPICS.filter(topic => topic.subjectCode === subjectCode);
-    $("#plannerTopic").innerHTML = topics.map(topic => `<option value="${topic.id}">${escapeHTML(topic.number)} · ${escapeHTML(topic.title)}</option>`).join("");
+    $("#plannerTopic").innerHTML = topics.map(topic => `<option value="${topic.id}">${escapeHTML(topic.number)}  ${escapeHTML(topic.title)}</option>`).join("");
   }
 
   function renderPlanner() {
@@ -395,7 +394,7 @@
       const dateLabel = session.date === today ? "Today" : session.date < today ? "Past" : day;
       return `<article class="planner-session ${session.done ? "is-done" : ""}">
         <div class="planner-date-badge"><small>${escapeHTML(dateLabel)}</small><strong>${escapeHTML(dayNumber)}</strong><small>${escapeHTML(month)}</small></div>
-        <div><h3>${escapeHTML(topic.title)}</h3><p>${escapeHTML(topic.subjectName)} · ${escapeHTML(topic.paperCode)} · ${session.duration} minutes${session.done ? " · Completed" : ""}</p></div>
+        <div><h3>${escapeHTML(topic.title)}</h3><p>${escapeHTML(topic.subjectName)}  ${escapeHTML(topic.paperCode)}  ${session.duration} minutes${session.done ? "  Completed" : ""}</p></div>
         <div class="planner-actions"><button type="button" data-plan-action="open" data-topic-id="${escapeHTML(topic.id)}">Open</button><button type="button" data-plan-action="toggle" data-plan-id="${escapeHTML(session.id)}" aria-pressed="${session.done ? "true" : "false"}">${session.done ? "Undo" : "Done"}</button><button type="button" class="planner-delete" data-plan-action="delete" data-plan-id="${escapeHTML(session.id)}" aria-label="Remove ${escapeHTML(topic.title)} from your plan">Remove</button></div>
       </article>`;
     }).join("");
@@ -472,12 +471,12 @@
     }
     const card = flashcardDeck[flashcardIndex];
     stage.innerHTML = `<article class="flashcard" id="activeFlashcard" role="button" tabindex="0" aria-label="Flashcard. Activate to ${flashcardRevealed ? "hide" : "reveal"} the answer">
-      <div class="flashcard-kicker">${escapeHTML(card.kind)} · ${flashcardIndex + 1} of ${flashcardDeck.length}</div>
+      <div class="flashcard-kicker">${escapeHTML(card.kind)}  ${flashcardIndex + 1} of ${flashcardDeck.length}</div>
       <div class="flashcard-question">${escapeHTML(card.front)}</div>
       ${flashcardRevealed ? `<div class="flashcard-answer">${escapeHTML(card.back)}</div>` : `<p class="flashcard-topic">Think of your answer, then turn the card.</p>`}
       <div class="flashcard-topic">${escapeHTML(card.topicTitle)}</div>
     </article>
-    <div class="flashcard-actions">${flashcardRevealed ? `<button type="button" class="flashcard-again" id="flashcardAgain">Again · review tomorrow</button><button type="button" class="flashcard-known" id="flashcardKnown">I knew it · space it out</button>` : `<button type="button" id="flipFlashcard">Turn the card</button>`}</div>`;
+    <div class="flashcard-actions">${flashcardRevealed ? `<button type="button" class="flashcard-again" id="flashcardAgain">Again  review tomorrow</button><button type="button" class="flashcard-known" id="flashcardKnown">I knew it  space it out</button>` : `<button type="button" id="flipFlashcard">Turn the card</button>`}</div>`;
     const active = $("#activeFlashcard");
     const flip = () => { flashcardRevealed = !flashcardRevealed; renderFlashcards(); };
     active.addEventListener("click", flip);

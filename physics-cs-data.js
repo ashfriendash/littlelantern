@@ -34,7 +34,6 @@
   const physicsPractical = [["P", "Practical skills, uncertainty and evaluation"]];
   S["9702"] = {
     subjectCode: "9702", subjectName: "Physics", syllabusYear: "2025–2027",
-    mappingNote: "This pack is mapped to the 2025–2027 Physics syllabus. Cambridge has published a newer 2028–2030 specification; these notes have not yet been fully re-audited against that version.",
     sourceUrl: "https://www.cambridgeinternational.org/programmes-and-qualifications/cambridge-international-as-and-a-level-physics-9702/",
     sourceTitle: "Cambridge International AS & A Level Physics 9702",
     papers: [

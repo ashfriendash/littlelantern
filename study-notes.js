@@ -1529,10 +1529,10 @@ window.LITTLE_LANTERN_NOTES = {
         {
           "level": "Challenge",
           "question": "Calls arrive at an average of 2.4 per hour. Assuming a Poisson model, find the probability of at least 2 calls in 30 minutes.",
-          "answer": "1 − 2.2e⁻¹·² ≈ 0.3378.",
+          "answer": "1 − 2.2e⁻¹² ≈ 0.3378.",
           "steps": [
             "For half an hour, λ = 2.4×0.5 = 1.2.",
-            "P(X≥2)=1−P(0)−P(1)=1−e⁻¹·²(1+1.2)."
+            "P(X≥2)=1−P(0)−P(1)=1−e⁻¹²(1+1.2)."
           ]
         }
       ],
@@ -2813,7 +2813,7 @@ window.LITTLE_LANTERN_NOTES = {
           "question": "Differentiate y = x ln x.",
           "answer": "dy/dx = ln x + 1.",
           "steps": [
-            "Product rule: derivative is 1·ln x + x·(1/x)."
+            "Product rule: derivative is 1ln x + x(1/x)."
           ]
         },
         {
@@ -3054,20 +3054,20 @@ window.LITTLE_LANTERN_NOTES = {
         "The magnitude of a = (x,y,z) is |a|=√(x²+y²+z²). A unit vector in the direction of a is a/|a|, provided a is not the zero vector.",
         "The midpoint of points A and B has position vector (a+b)/2. For a parallelogram, vector sums around opposite corners give the corresponding diagonal relationship.",
         "A line can be written r = a + λb: a is a point on the line and b is a direction vector. Two line equations intersect if their coordinates can be equal for a common set of parameters; parallel lines have proportional direction vectors.",
-        "The scalar product is a·b = a₁b₁ + a₂b₂ (+ a₃b₃) = |a||b|cos θ. If a·b=0 for two non-zero vectors, the vectors are perpendicular.",
+        "The scalar product is ab = a₁b₁ + a₂b₂ (+ a₃b₃) = |a||b|cos θ. If ab=0 for two non-zero vectors, the vectors are perpendicular.",
         "To test whether two 3D lines intersect, equate x, y and z components and solve the parameter equations. If they are not parallel and no common solution exists, they are skew."
       ],
       "formulae": [
-        "|a| = √(a·a)",
-        "a·b = a₁b₁ + a₂b₂ (+ a₃b₃)",
-        "a·b = |a||b|cos θ",
+        "|a| = √(aa)",
+        "ab = a₁b₁ + a₂b₂ (+ a₃b₃)",
+        "ab = |a||b|cos θ",
         "Midpoint position vector = (a+b)/2",
         "Line: r = a + λb"
       ],
       "example": {
         "question": "Find the angle between a = (1, 2, 2) and b = (2, 1, 2).",
         "steps": [
-          "a·b = 1×2 + 2×1 + 2×2 = 8.",
+          "ab = 1×2 + 2×1 + 2×2 = 8.",
           "|a|=√9=3 and |b|=√9=3.",
           "So cos θ = 8/(3×3) = 8/9."
         ],
@@ -3093,7 +3093,7 @@ window.LITTLE_LANTERN_NOTES = {
           "question": "Find the angle between a = (1,2,2) and b = (2,1,2).",
           "answer": "θ = cos⁻¹(8/9) ≈ 27.3°.",
           "steps": [
-            "a·b=8 and both magnitudes are 3.",
+            "ab=8 and both magnitudes are 3.",
             "cos θ=8/9."
           ]
         },

@@ -1,0 +1,21 @@
+/* Keeps the three subject choices centred without editing the main stylesheet. */
+.home-page .opening-shell {
+  min-height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-page .opening-subject-heading {
+  margin-top: clamp(72px, 16vh, 150px);
+}
+
+.home-page .home-subject-link {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.home-page .home-subject-link:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}

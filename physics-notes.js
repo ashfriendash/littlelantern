@@ -245,5 +245,5 @@
     };
   }
   window.LITTLE_LANTERN_NOTES.subjectSources = window.LITTLE_LANTERN_NOTES.subjectSources || {};
-  window.LITTLE_LANTERN_NOTES.subjectSources["9702"] = "Original revision summaries and practice mapped to Cambridge International Physics 9702, syllabus for examinations in 2025–2027. Practical skills are summarised separately; use the official syllabus for the full objectives and assessment instructions. Not an official Cambridge resource.";
+  window.LITTLE_LANTERN_NOTES.subjectSources["9702"] = "also use official syllabus";
 })();

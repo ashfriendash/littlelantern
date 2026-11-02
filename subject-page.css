@@ -1,0 +1,322 @@
+/* Simple, read-only subject pages. The existing style.css is left unchanged. */
+.subject-content-page {
+  min-height: 100vh;
+  background: var(--page-bg, #f5f3eb);
+  color: var(--text, #354638);
+}
+
+.subject-header,
+.subject-main {
+  width: min(100% - 40px, 980px);
+  margin: 0 auto;
+}
+
+.subject-header {
+  padding: 34px 0 20px;
+}
+
+.subject-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+.subject-home-link {
+  color:#eb0000;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.subject-home-link:hover {
+  text-decoration: underline;
+}
+
+.subject-code-label,
+.section-kicker {
+  margin: 0;
+  color: var(--muted, #626e61);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.subject-header h1 {
+  margin: 0;
+  font-family: "Projekt Blackbird", Arial, sans-serif;
+  font-size: clamp(34px, 5vw, 54px);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.subject-subtitle {
+  margin: 10px 0 0;
+  color: var(--muted, #626e61);
+  font-size: 30px;
+}
+
+.subject-main {
+  padding: 12px 0 70px;
+}
+
+.content-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin: 12px 0 34px;
+  color: var(--muted, #626e61);
+  font-size: 12px;
+}
+
+.paper-section {
+  margin: 42px 0;
+}
+
+.paper-heading {
+  margin: 0 0 17px;
+  padding: 0 0 12px;
+}
+
+.paper-heading h2 {
+  margin: 5px 0 0;
+  font-family: "Projekt Blackbird", Arial, sans-serif;
+  font-size: clamp(23px, 3vw, 30px);
+  font-weight: 500;
+}
+
+.topic-notes {
+  margin: 16px 0 24px;
+  padding: clamp(18px, 3vw, 30px);
+  background: var(--surface, #fff);
+  border: 0;
+  box-shadow: var(--shadow, 0 4px 14px rgba(40, 55, 40, 0.06));
+}
+
+.topic-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.topic-number {
+  display: grid;
+  flex: 0 0 43px;
+  min-height: 43px;
+  place-items: center;
+  background:#ffad06;
+  color: #020b00;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.topic-heading h3 {
+  margin: 0;
+  font-family: "Projekt Blackbird", Arial, sans-serif;
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.topic-heading p {
+  margin: 5px 0 0;
+  color: var(--muted, #626e61);
+  font-size: 11px;
+}
+
+.notes-block {
+  margin: 19px 0;
+}
+
+.notes-block h4,
+.practice-heading h4 {
+  margin: 0 0 8px;
+  color: #ff5900;
+  font-family: "Projekt Blackbird", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.notes-block p,
+.practice-intro {
+  margin: 7px 0;
+  color: var(--text, #354638);
+  font-size: 13px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.study-list,
+.step-list {
+  margin: 8px 0 0;
+  padding-left: 21px;
+}
+
+.study-list li,
+.step-list li {
+  margin: 7px 0;
+  padding-left: 3px;
+  color: var(--text, #354638);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.formula-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 8px;
+  margin: 9px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.formula-list li {
+  padding: 11px 13px;
+  background: var(--surface-soft, #f8f8f2);
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.worked-example {
+  padding: 16px 18px;
+  background: var(--surface-soft, #f8f8f2);
+}
+
+.example-question {
+  font-weight: 600;
+}
+
+.example-answer {
+  margin-top: 11px !important;
+}
+
+.practice-section {
+  margin-top: 28px;
+  padding-top: 19px;
+}
+
+.practice-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.practice-heading h4 {
+  margin: 4px 0 0;
+  font-size: 20px;
+}
+
+.practice-heading > span {
+  color: var(--muted, #626e61);
+  font-size: 11px;
+}
+
+.practice-intro {
+  margin-bottom: 14px;
+  color: var(--muted, #626e61);
+}
+
+.practice-question-card {
+  margin: 12px 0;
+  padding: 16px 18px;
+  background: var(--surface-soft, #f8f8f2);
+}
+
+.practice-question-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted, #626e61);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+}
+
+.practice-question-text {
+  margin: 10px 0 14px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.practice-answer {
+  padding-top: 12px;
+  background: transparent;
+}
+
+.practice-answer p {
+  margin: 5px 0;
+  font-size: 13px;
+  line-height: 1.75;
+  white-space: pre-line;
+}
+
+.practice-answer .answer-label {
+  color: #ff5900;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.subject-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin-top: 48px;
+  padding-top: 18px;
+  color: var(--muted, #626e61);
+  font-size: 11px;
+}
+
+.subject-footer p {
+  flex: 1 1 100%;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.subject-footer a {
+  color: #eb0000;
+  text-decoration: none;
+}
+
+.subject-footer a:hover {
+  text-decoration: underline;
+}
+
+.page-error {
+  padding: 25px;
+  background: var(--surface, #fff);
+}
+
+@media (max-width: 600px) {
+  .subject-header,
+  .subject-main {
+    width: min(100% - 28px, 980px);
+  }
+
+  .subject-header {
+    padding-top: 22px;
+  }
+
+  .subject-header-top {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 24px;
+  }
+
+  .topic-notes {
+    padding: 17px;
+  }
+
+  .practice-question-card {
+    padding: 14px;
+  }
+}
