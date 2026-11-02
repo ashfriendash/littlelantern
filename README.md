@@ -5,5 +5,5 @@ QuickStart:Click the link
 Features:
 1.3 Subject choices
 2.Notes for each topic
-3.Separate paths for AS and A2
-4.Study focus timer
+4.Practice Now questions
+5.Exam tips
